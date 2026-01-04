@@ -1,0 +1,67 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+
+body {
+    background: #f8f9fa;
+    text-align: center;
+    padding: 30px;
+}
+
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* PYQ Container */
+.pyq {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%;
+    margin: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.link {
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.link:hover {
+    background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pyq {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .link {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}

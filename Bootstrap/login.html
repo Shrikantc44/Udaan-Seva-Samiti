@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <style>
+    @import url('/Bootstrap/login.css');
+  </style>
+</head>
+<body>
+
+<!-- Modal Container -->
+<div class="modal-container" id="modalContainer">
+  <div class="modal-box">
+    <div class="left-panel">
+      <img src="/images/logo.png" alt="Udaan Seva Samiti Logo" class="logo">
+      <ul>
+  <li>उड़ान सेवा समिति का उद्देश्य विद्यार्थियों और युवाओं को शिक्षा एवं करियर के क्षेत्र में सही मार्गदर्शन प्रदान करना है।</li>
+  <li>समिति आर्थिक रूप से कमजोर एवं जरूरतमंद छात्रों को प्रतियोगी परीक्षाओं की तैयारी में सहायता करती है।</li>
+  <li>उड़ान सेवा समिति शिक्षा, जागरूकता और कौशल विकास से जुड़े विभिन्न सामाजिक कार्यक्रम आयोजित करती है।</li>
+  <!-- <li>संस्था छात्रों को उनके भविष्य के लक्ष्य तय करने में मार्गदर्शन एवं प्रेरणा प्रदान करती है।</li> -->
+  <li>समिति का मुख्य लक्ष्य समाज के हर वर्ग तक शिक्षा और अवसरों की पहुँच सुनिश्चित करना है।</li>
+</ul>
+    </div>
+    <div class="right-panel">
+      <h2 id="formTitle">Sign In</h2>
+      <form id="authForm">
+        <div id="signupFields" class="hidden">
+          <input type="text" id="fullName" placeholder="Enter Full Name">
+          <input type="tel" id="contact" placeholder="Enter Contact Number">
+        </div>
+        <input type="email" id="email" placeholder="Enter Your Email">
+        <div class="password-wrapper">
+          <input type="password" id="password" placeholder="Enter Your Password">
+          <span class="toggle-password" onclick="togglePassword('password')">&#128065;</span>
+        </div>
+        <div id="confirmPasswordField" class="password-wrapper hidden">
+          <input type="password" id="confirmPassword" placeholder="Enter Confirm Password">
+          <span class="toggle-password" onclick="togglePassword('confirmPassword')">&#128065;</span>
+        </div>
+        <a href="#" id="resetPassword">Reset Password</a>
+        <button type="submit" id="submitButton">Sign In</button>
+      </form>
+      <p id="toggleText">Don't have an account? <a href="#" onclick="toggleForm()">Sign up</a></p>
+    </div>
+  </div>
+</div>
+
+<script src="/Bootstrap/login.js"></script>
+</body>
+</html>

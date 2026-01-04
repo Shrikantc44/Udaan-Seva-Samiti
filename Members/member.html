@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+        @import url('memberresponsive.css');
+        @import url('/Members/member.css');
+        /* @import url('/Members/style.css'); */
+        /* @import url('/Members/responsive.css');  */
+        
+        
+       
+    </style>
+</head>
+<body>
+    
+     
+     <!-- navbar start -->
+    <nav class="navbar">
+    <div class="logo">
+        <img src="/images/logo.png" alt="">
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search ....">
+        <button><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <ul class="menu">
+        <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="/Gallery/gallery.html"> <i class="fa-solid fa-image"></i> Gallery</a></li>
+        <li><a href="/PYQs/pyq.html"> <i class="fa-solid fa-book"></i> PYQ Paper</a></li>
+        <li><a href="/Result/result.html"> <i class="fa-solid fa-book"></i> Result</a></li>
+        <li><a href="/Members/member.html"> <i class="fa-solid fa-person"></i> Members</a></li>
+        <li><a href="/ContactUs/contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+    </ul>
+
+    <div class="sign-in">
+        <ul>
+            <li><i class="fa-solid fa-user"></i> <a href="/Bootstrap/login.html">Sign In</a></li>
+        </ul>
+    </div>
+</nav>
+
+      <script>
+        function toggleMenu() {
+            document.querySelector('.menu').classList.toggle('active');
+        }
+    </script>
+      <!-- Navbar end -->
+
+    <div class="container">
+        <div class="card">
+            <img src="/images/logo.png" alt="Sahyogkarta">
+            <h3>Sahyogkarta</h3>
+            <p>Join as a Sahyogkarta and support our mission.</p>
+            <a href="/Members/sahyog.html" class="button">Click Here</a>
+        </div>
+        <div class="card">
+            <img src="/images/logo.png" alt="Karyakarta">
+            <h3>Karyakarta</h3>
+            <p>Become a Karyakarta and work towards our goal.</p>
+            <a href="/Members/karyakarta.html" class="button">Click Here</a>
+        </div>
+    </div>
+</body>
+</html>

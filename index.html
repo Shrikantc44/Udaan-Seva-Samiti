@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udaan Seva Samiti</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+        @import url('./css/style.css');
+        @import url('./css/responsive.css');
+        @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css');
+    </style>
+</head>
+<body>
+    <!-- Navbar Start -->
+      <nav class="navbar">
+        <div class="logo">
+           <img src="./images/logo.png" alt="">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search ....">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+      </div>
+        <div>
+            <ul class="menu">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="/Gallery/gallery.html"> <i class="fa-solid fa-image"></i> Gallery</a></li>
+                <li><a href="./PYQs/pyq.html"> <i class="fa-solid fa-book"></i> PYQ Paper</a></li>
+                <li><a href="./Result/result.html"> <i class="fa-solid fa-book"></i> Result</a></li>
+                <li><a href="./Members/member.html"> <i class="fa-solid fa-person"></i> Members</a></li>
+                <li><a href="/ContactUs/contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+                <li><a href="/Bootstrap/login.html" id="loginBtn"><i class="fas fa-sign-in-alt"></i>Login</a>
+            </ul>
+            <button id="logoutButton" class="logoutbtn" style="display: none;">Logout</button>
+        </div>
+        <!-- <div class="sign-in">
+            <ul>
+                <li><i class="fa-solid fa-user"></i><a href="/Signin/sign.html">Sign In</a> </li>
+            </ul>
+        </div> -->
+        
+      </nav>
+      <script>
+        function toggleMenu() {
+            document.querySelector('.menu').classList.toggle('active');
+        }
+    </script>
+      
+      <!-- Navbar end -->
+
+
+      
+
+      <!-- ----------login page ------------------------>
+   
+       <!-- Login Popup -->
+    <!-- <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <div class="left-section">
+          <img src="/images/logo.png" alt="">
+         
+          <p>साइन अप करके आप ढेरों लाभ प्राप्त कर सकते हैं।</p>
+          <ul>
+            <li>उड़ान  सेवा समिति एक सामाजिक संस्था है जो ग्रामीण विकास एवं शिक्षा के क्षेत्र में कार्य करती है।</li>
+            <li>इसका उद्देश्य ग्रामीण क्षेत्रों में रहने वाले बच्चों और युवाओं को शिक्षा, स्वास्थ और रोजगार के अवसर उपलब्ध कराना है।</li>
+            <li>उड़ान सेवा समिति समाज के कमजोर वर्गों को आत्मनिर्भर बनाने के लिए निरंतर प्रयासरत है।</li>
+          </ul>
+        </div>
+        <div class="right-section">
+          <h2 id="formTitle">Sign Up</h2>
+
+          <-- Sign Up Form -->
+          <!-- <form id="signupForm">
+            <label for="signupName">Full Name</label><br>
+            <input type="text" name="name" id="signupName" minlength="5" pattern="[A-Za-z]{2,}(\s[A-Za-z]{2,})?" title="Enter at least 5 characters, with an optional space between first and last name." placeholder="Enter Full Name" required><br>
+
+            <label for="signupEmail">Email Address</label><br>
+            <input type="email" name="signupEmail" id="signupEmail" placeholder="Enter Your Email" required><br>
+
+            <label for="mob">Contact Number</label><br>
+            <input type="tel" name="mob" id="mob" pattern="[6-9]\d{9}" minlength="10" maxlength="10" title="Enter a valid 10-digit mobile number starting with 6, 7, 8, or 9." placeholder="Enter Your Contact Number" required><br>
+
+            <label for="password">Password</label><br>
+            <div class="input-container">
+              <input type="password" name="password" id="password" minlength="8" maxlength="20" 
+                     pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" 
+                     title="Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character." 
+                     placeholder="Enter Your Password" required>
+              <i class="fas fa-eye eye-icon" onclick="togglePassword('password', this)"></i>
+            </div>
+          <span id="passwordError" class="error"></span>
+
+            <label for="confirm_password">Confirm Password</label><br>
+            <div class="input-container">
+              <input type="password" name="confirm_password" id="confirm_password" minlength="8" maxlength="20" 
+                     pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" 
+                     title="Confirm password must match the above password requirements." 
+                     placeholder="Enter Your Confirm Password" required>
+              <i class="fas fa-eye eye-icon" onclick="togglePassword('confirm_password', this)"></i>
+            </div>
+          <span id="confirmPasswordError" class="error"></span>
+
+            <button type="submit">Register</button>
+            <p id="successMessage" class="success" style="display: none;">Signup Successfully! Please Login</p>
+          </form> -->
+
+          <!-- Sign In Form -->
+          <!-- <form id="signinForm" style="display: none;">
+            <label for="signinEmail">Email Address</label><br>
+            <input type="email" id="signinEmail" name="signinEmail" placeholder="Enter Your Email" required><br>
+
+            
+            <label for="signinPassword">Password</label><br>
+            <div class="input-container">
+              <input type="password" name="signinPassword" id="signinPassword" minlength="8" maxlength="20" 
+                     pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" 
+                     title="Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character." 
+                     placeholder="Enter Your Password" required>
+              <i class="fas fa-eye eye-icon" onclick="togglePassword('password', this)"></i>
+            </div> -->
+
+            <!-- Reset Password link -->
+            <!-- <div class="reset-password-container">
+              <a href="#" class="reset-password-link">Reset Password</a>
+            </div>
+
+            <button type="submit">Sign In</button>
+            <p id="signinMessage" class="success" style="display: none;">Login Successful!</p>
+            <p id="signinError" class="error" style="display: none;">Invalid Email or Password!</p>
+          </form> -->
+
+          <!-- Reset Password Form -->
+          <!-- <form id="resetPasswordForm" style="display: none;">
+            <label>Email Address</label><br>
+            <input type="email" placeholder="Enter Your Email"><br>
+
+            <label>WhatsApp Number</label><br>
+            <input type="tel" placeholder="Enter Your WhatsApp Number"><br>
+
+            <button type="button">Get OTP</button>
+          </form> -->
+
+          <!-- <button class="google-btn">Register with Google</button> -->
+          <!-- <p>
+            Don't have an account <a href="#" id="toggleFormLink">Sign in</a>
+          </p>
+        </div>
+      </div>
+    </div> --> 
+
+    <!-- -------------------login page close -------------------  -->
+    
+      <!-- Page 1 -->
+
+      <div class="page1">
+        <section class="about">
+          <h2>उड़ान सेवा समिति क्या है ?...  </h2><br>
+          <p>उड़ान सेवा समिति एक निःशुल्क संगठन है, जो विशेष रूप से चौहान समुदाय के गाँवों के बच्चों को शिक्षा के प्रति प्रेरित करने के लिए कार्य करता है। 
+            यह समिति शिक्षा के महत्व को समझते हुए हर वर्ष कक्षा 5वीं से 10वीं तक के विद्यार्थियों के लिए एक प्रतिस्पर्धात्मक परीक्षा (कॉम्पिटिटिव एग्जाम) का आयोजन करती है।
+            इस परीक्षा का मुख्य उद्देश्य बच्चों में शैक्षणिक जागरूकता बढ़ाना और उन्हें भविष्य में उच्च स्तरीय प्रतियोगी परीक्षाओं के लिए तैयार करना है।</p><br>
+          <p>समिति का यह प्रयास न केवल छात्रों की बौद्धिक क्षमताओं को विकसित करने में सहायक होता है, बल्कि उन्हें आत्मविश्वास और प्रतिस्पर्धात्मक दृष्टिकोण अपनाने के लिए 
+            भी प्रेरित करता है। इस परीक्षा के माध्यम से बच्चों को अपनी क्षमताओं को परखने, अपनी कमजोरियों को समझने और समय रहते उन्हें सुधारने का अवसर मिलता है।
+            इसके अलावा, यह परीक्षा छात्रों को शिक्षा के प्रति गंभीर बनाने और उनके उज्ज्वल भविष्य की दिशा में एक मजबूत नींव तैयार करने में सहायता करती है।</p> <br>
+          <p>उड़ान सेवा समिति का उद्देश्य ग्रामीण क्षेत्रों के छात्रों को उच्च शिक्षा और प्रतियोगी परीक्षाओं की तैयारी के लिए एक उचित मंच प्रदान करना है, ताकि वे भविष्य में 
+            सरकारी एवं अन्य प्रतिष्ठित परीक्षाओं में सफलता प्राप्त कर सकें।</p>
+        
+        </section>
+        <section class="about1">
+            <img src="images/G7.jpg" alt="">
+        </section>
+      </div>
+
+      <!-- Slider -->
+
+      <div id="carouselExample" class="carousel slide custom-carousel" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/images/slider1.png" class="d-block custom-img" alt="Slide 1">
+        </div>
+        <div class="carousel-item">
+          <img src="/images/C15.jpg" class="d-block custom-img" alt="Slide 2">
+        </div>
+        <div class="carousel-item">
+          <img src="/images/C24.jpg" class="d-block custom-img" alt="Slide 3">
+        </div>
+        <div class="carousel-item">
+          <img src="/images/C16.jpg" class="d-block custom-img" alt="Slide 3">
+        </div>
+        <div class="carousel-item">
+          <img src="/images/C18.jpg" class="d-block custom-img" alt="Slide 3">
+        </div>
+        <div class="carousel-item">
+          <img src="/images/C19.jpg" class="d-block custom-img" alt="Slide 3">
+        </div>
+        <div class="carousel-item">
+          <img src="/images/C20.jpg" class="d-block custom-img" alt="Slide 3">
+        </div>
+        <div class="carousel-item">
+          <img src="/images/C12.jpg" class="d-block custom-img" alt="Slide 3">
+        </div>
+        <div class="carousel-item">
+          <img src="/images/C21.jpg" class="d-block custom-img" alt="Slide 3">
+        </div>
+      </div>
+      <button class="carousel-control-prev custom-control" type="button" data-bs-target="#carouselExample"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next custom-control" type="button" data-bs-target="#carouselExample"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- Slider close -->
+
+      <!-- Parallax Effect -->
+      <div class="parallax"></div>
+
+      <div class="content">
+          <h2>Welcome to Udaan Seva Samiti</h2>
+          <p>This is the free Organization who conduct the exam for better future competitive examination.</p>
+      </div>
+  
+      <div class="parallax1"></div>
+      <footer>
+        <div class="footer-container">
+           <!-- Contact Information Section -->
+         <div class="contact-info">
+          <h3>Contact Us</h3>
+          <p><strong>Email:</strong><a href="mailto:udaansamiti4@gmail.com">udaansamiti4@gmail.com</a></p>
+          <p><strong>Phone:</strong><a href="tel:+917007523835">7007523835</a></p>
+         </div>
+          <div class="quick-links">
+            <!-- Quick links section -->
+            <h3>Quick links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Gallery</a></li>
+                <li><a href="./PYQs/pyq.html">PYQ Paper</a></li>
+                <li><a href="./Result/result.html">Results</a></li>
+                <li><a href="./Members/member.html">Members</a></li>
+                <li><a href="/ContactUs/contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+         
+
+         <!-- Google map section -->
+          
+         <div class="map">
+            <h3>Our Location</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.50190144041383!2d83.04036084600168!3d25.97719653456373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3991b19a442c51c1%3A0xdaccef8d9160e62c!2sShiv%20Temple!5e1!3m2!1sen!2sin!4v1743277382247!5m2!1sen!2sin"
+             width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+        </div>
+
+        <!-- Copyright Section -->
+     <div class="copyright">
+      <p>© 2026 Udaan Seva Samiti. All Rights Reserved.</p>
+     </div>
+        
+      </footer>
+
+      <script src="script.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
