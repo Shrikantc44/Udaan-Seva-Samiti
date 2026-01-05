@@ -115,12 +115,12 @@ div li{
 .content {
     padding: 50px;
     text-align: center;
-    background: #0896ce;
+    background: #b6e0f0;
 }
 
 /* footer */
 footer{
-    background-color: #be11d1;
+    background-color: #7dc3db;
     color: white;
     padding: 20px 0;
     text-align: center;
@@ -147,7 +147,7 @@ footer{
     margin: 5px 0;
 }
 .quick-links ul li a{
-    color: white;
+    color: rgb(10, 10, 10);
     text-decoration: none;
 }
 .quick-links ul li a:hover .contact-info p a:hover {
@@ -161,13 +161,35 @@ footer{
 .map h3{
       padding: 10px;
 }
-.copyright {
-    background-color: #111;
+/* .copyright {
+    background-color: #393636;
     padding: 10px;
     margin-top: 10px;
-}
+} */
 .contact-info h3{
     padding: 10px;
+}
+
+.copyright {
+     background-color: #393636;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    font-size: 14px;
+}
+
+.designer {
+    display: flex;
+    align-items: center;
+    gap: 6px;   /* 👈 yahin se gap control hoga */
+}
+
+.designer img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 
@@ -356,8 +378,8 @@ footer{
 /* Slider  */
 
 .custom-carousel {
-  max-width: 95%;
-  margin: 40px auto;
+  max-width: 80%;
+  margin: 30px auto;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
