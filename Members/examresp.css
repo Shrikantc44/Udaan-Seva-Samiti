@@ -1,0 +1,36 @@
+/* Tablet view */
+@media (max-width: 768px) {
+    .container h1 {
+        font-size: 26px;
+    }
+
+    .card {
+        width: 220px;
+    }
+}
+
+/* Mobile view */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 10px;
+    }
+
+    .container h1 {
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+
+    .cards {
+        gap: 20px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .card img {
+        width: 100px;
+        height: 100px;
+    }
+}
