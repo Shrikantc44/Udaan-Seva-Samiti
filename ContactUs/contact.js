@@ -1,39 +1,40 @@
-const form = document.getElementById('contactForm');
-const statusMsg = document.getElementById('statusMsg');
+const form = document.getElementById("contactForm");
+const statusMsg = document.getElementById("statusMsg");
 
-// ✅ Replace this with your Google Apps Script Web App URL
-const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbz4u5NFW_g5OZwvkWU6NVStduVtgJfKh4z8lMVLP89epunRzfTfee-HSPFtEvEKUQgmFA/exec";
+// 👇 NEW Google Apps Script URL
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbyGtLj0d3MkOiJuQjr6RosbElXihHzuCjYyB24tPrwgX7JblbcLAFXruf3xoQV1s69myg/exec";
 
-form.addEventListener('submit', async (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const formData = {
-    name: form.name.value,
-    email: form.email.value,
-    phone: form.phone.value,
-    help: form.help.value,
-    message: form.message.value,
-    subscribe: form.subscribe.checked ? "Yes" : "No"
-  };
+  const formData = new FormData();
+  formData.append("name", form.name.value);
+  formData.append("email", form.email.value);
+  formData.append("phone", form.phone.value);
+  formData.append("help", form.help.value);
+  formData.append("message", form.message.value);
+  formData.append("subscribe", form.subscribe.checked ? "Yes" : "No");
 
   try {
-    const response = await fetch(GOOGLE_SHEET_URL, {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: { 'Content-Type': 'application/json' }
+    const res = await fetch(GOOGLE_SHEET_URL, {
+      method: "POST",
+      body: formData
     });
 
-    const result = await response.json();
-    if(result.result === "success") {
-      statusMsg.textContent = "Your message has been sent successfully!";
+    const text = await res.text();
+
+    if (text === "success") {
+      statusMsg.style.color = "green";
+      statusMsg.innerText = "Message sent successfully!";
       form.reset();
     } else {
-      statusMsg.style.color = "red";
-      statusMsg.textContent = "Error submitting the form. Try again.";
+      throw new Error("Sheet error");
     }
-  } catch (error) {
-    console.error(error);
+
+  } catch (err) {
+    console.error(err);
     statusMsg.style.color = "red";
-    statusMsg.textContent = "Error submitting the form. Try again.";
+    statusMsg.innerText =
+      "Something went wrong. Please try again.";
   }
 });
