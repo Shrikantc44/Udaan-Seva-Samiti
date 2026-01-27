@@ -246,19 +246,19 @@ body {
 
 .card-image {
     position: relative;
-    height: 250px;
+    height: 200px;
     overflow: hidden;
 }
 
 .card-image img {
     width: 100%;
-    height: 100%;
+    height: 160%;
     object-fit: cover;
     transition: transform 0.5s ease;
 }
 
 .card:hover .card-image img {
-    transform: scale(1.05);
+    transform: scale(1.0);
 }
 
 .card-badge {
@@ -291,8 +291,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 160px;
     background: linear-gradient(45deg, #00bcd4, #00ffff9e);
     border-radius: 50%;
     display: flex;
