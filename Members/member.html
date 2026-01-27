@@ -3,79 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Udaan Seva Samiti - Members</title>
     <style>
         @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
-        @import url('memberresponsive.css');
         @import url('/Members/member.css');
-        /* @import url('/Members/style.css'); */
-        /* @import url('/Members/responsive.css');  */
-        
-        
-       
+        @import url('/Members/memberresponsive.css');
     </style>
 </head>
 <body>
-    
-     
-     <!-- navbar start -->
+    <!-- Navbar Start -->
     <nav class="navbar">
-    <div class="logo">
-        <img src="/images/logo.png" alt="">
-    </div>
+        <div class="logo">
+            <img src="/images/logo.png" alt="Udaan Seva Samiti Logo">
+        </div>
 
-    <div class="search-bar">
-        <input type="text" placeholder="Search ....">
-        <button><i class="fas fa-search"></i></button>
-    </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search ....">
+            <button><i class="fas fa-search"></i></button>
+        </div>
 
-    <div class="menu-toggle" onclick="toggleMenu()">
-        <i class="fas fa-bars"></i>
-    </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
 
-    <ul class="menu">
-        <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
-        <li><a href="/Gallery/gallery.html"> <i class="fa-solid fa-image"></i> Gallery</a></li>
-        <li><a href="/PYQs/pyq.html"> <i class="fa-solid fa-book"></i> PYQ Paper</a></li>
-        <li><a href="/Result/result.html"> <i class="fa-solid fa-book"></i> Result</a></li>
-        <li><a href="/Members/member.html"> <i class="fa-solid fa-person"></i> Members</a></li>
-        <li><a href="/ContactUs/contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
-    </ul>
-
-    <div class="sign-in">
-        <ul>
-            <li><i class="fa-solid fa-user"></i> <a href="/Bootstrap/login.html">Sign In</a></li>
+        <ul class="menu">
+            <li><a href="/index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="/Gallery/gallery.html"> <i class="fa-solid fa-image"></i> Gallery</a></li>
+            <li><a href="/PYQs/pyq.html"> <i class="fa-solid fa-book"></i> PYQ Paper</a></li>
+            <li><a href="/Result/result.html"> <i class="fa-solid fa-book"></i> Result</a></li>
+            <li><a href="/Members/member.html"> <i class="fa-solid fa-person"></i> Members</a></li>
+            <li><a href="/ContactUs/contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
         </ul>
-    </div>
-</nav>
 
-      <script>
+        <div class="sign-in">
+            <ul>
+                <li><i class="fa-solid fa-user"></i> <a href="/Bootstrap/login.html">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
         function toggleMenu() {
             document.querySelector('.menu').classList.toggle('active');
         }
     </script>
-      <!-- Navbar end -->
+    <!-- Navbar end -->
 
-    <div class="container">
-        <div class="card">
-            <img src="/images/logo.png" alt="Sahyogkarta">
-            <h3>Sahyogkarta</h3>
-            <p>Join as a Sahyogkarta and support our mission.</p>
-            <a href="/Members/sahyog.html" class="button">Click Here</a>
-        </div>
-        <div class="card">
-            <img src="/images/logo.png" alt="Karyakarta">
-            <h3>Karyakarta</h3>
-            <p>Become a Karyakarta and work towards our goal.</p>
-            <a href="/Members/karyakarta.html" class="button">Click Here</a>
-        </div>
-
-        <div class="card">
-            <img src="/images/logo.png" alt="Karyakarta">
-            <h3>Examination Controller</h3>
-            <p>Become an Examination Controller and contribute towards achieving our goal.</p>
-            <a href="/Members/examcontroller.html" class="button">Click Here</a>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1><i class="fas fa-users"></i> Join Our Community</h1>
+            <p class="subtitle">Be part of Udaan Seva Samiti and contribute to meaningful change</p>
+            <p class="description">Choose your role and help us make a difference in the community through dedicated service and collaboration.</p>
         </div>
     </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="section-header">
+            <h2>Choose Your Role</h2>
+            <p>Select from the following membership categories to join our organization</p>
+        </div>
+
+        <div class="container">
+            <!-- Sahyogkarta Card -->
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="card-content">
+                    <img src="/images/logo.png" alt="Sahyogkarta">
+                    <h3>Sahyogkarta</h3>
+                    <p class="role-desc">Supporting Member</p>
+                    <p class="card-text">Join as a Sahyogkarta and support our mission through contributions and guidance. Help us create lasting impact in the community.</p>
+                    <div class="features">
+                        <p><i class="fas fa-check-circle"></i> Provide financial support</p>
+                        <p><i class="fas fa-check-circle"></i> Offer strategic guidance</p>
+                        <p><i class="fas fa-check-circle"></i> Network development</p>
+                    </div>
+                    <a href="/Members/sahyog.html" class="button">
+                        <i class="fas fa-user-plus"></i> Join as Sahyogkarta
+                    </a>
+                </div>
+            </div>
+
+            <!-- Karyakarta Card -->
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="card-content">
+                    <img src="/images/logo.png" alt="Karyakarta">
+                    <h3>Karyakarta</h3>
+                    <p class="role-desc">Active Volunteer</p>
+                    <p class="card-text">Become a Karyakarta and actively participate in our initiatives, events, and daily operations to drive our mission forward.</p>
+                    <div class="features">
+                        <p><i class="fas fa-check-circle"></i> Hands-on participation</p>
+                        <p><i class="fas fa-check-circle"></i> Event organization</p>
+                        <p><i class="fas fa-check-circle"></i> Community outreach</p>
+                    </div>
+                    <a href="/Members/karyakarta.html" class="button">
+                        <i class="fas fa-user-plus"></i> Join as Karyakarta
+                    </a>
+                </div>
+            </div>
+
+            <!-- Examination Controller Card -->
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <div class="card-content">
+                    <img src="/images/logo.png" alt="Examination Controller">
+                    <h3>Examination Controller</h3>
+                    <p class="role-desc">Academic Coordinator</p>
+                    <p class="card-text">Take charge as an Examination Controller to manage and oversee our educational programs, exams, and academic evaluations.</p>
+                    <div class="features">
+                        <p><i class="fas fa-check-circle"></i> Exam coordination</p>
+                        <p><i class="fas fa-check-circle"></i> Paper setting</p>
+                        <p><i class="fas fa-check-circle"></i> Result management</p>
+                    </div>
+                    <a href="/Members/examcontroller.html" class="button">
+                        <i class="fas fa-user-plus"></i> Join as Controller
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <div class="info-card">
+                <i class="fas fa-info-circle"></i>
+                <h3>Membership Benefits</h3>
+                <p>All members receive access to exclusive events, training sessions, and community networking opportunities.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-question-circle"></i>
+                <h3>Need Help Choosing?</h3>
+                <p>Contact our membership coordinator at <strong>members@udaansamiti.org</strong> for personalized guidance.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="members-footer">
+        <p>© 2024 Udaan Seva Samiti. Empowering Communities Through Service.</p>
+        <div class="footer-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
 </body>
 </html>

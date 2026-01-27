@@ -7,39 +7,88 @@
     <style>
         @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
         @import url('/Result/result.css'); 
-        
         @import url('/Result/style.css');
-        @import url('/Result/responsive.css');
-        
-
-       
+        @import url('/Result/responsive.css');  
     </style>
 </head>
 <body>
 
-    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="/Gallery/logo.png" alt="Logo">
+                
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Search results...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
 
-    <div class="container">
-        <div class="card">
-            <img src="/images/photo1.jpg" alt="Result">
-            <h3>Class 4th to 6th Results</h3>
-            <p>Click below to 👇 know the result</p>
-            <a href="/Result/4thto6th.html" class="button">Click Here</a>
-        </div>
-        <div class="card">
-            <img src="/images/photo2.jpg" alt="Result">
-            <h3>Class 7th to 8th Results</h3>
-            <p>Click below to 👇 know the result</p>
-            <a href="/Result/7thto8th.html" class="button">Click Here</a>
-        </div>
-        <div class="card">
-            <img src="/images/photo2.jpg" alt="Results">
-            <h3>Class 9th to 10th Results</h3>
-            <p>Click below to 👇 know the result</p>
-            <a href="/Result/9thto10.html" class="button">Click Here</a>
-        </div>
-    </div>
+            <ul class="menu" id="navMenu">
+                <li><a href="/index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="/Gallery/gallery.html"><i class="fa-solid fa-image"></i> Gallery</a></li>
+                <li><a href="/PYQs/pyq.html"><i class="fa-solid fa-book"></i> PYQ</a></li>
+                <li><a href="/Result/result.html" class="active"><i class="fa-solid fa-graduation-cap"></i> Result</a></li>
+                <li><a href="/Members/member.html"><i class="fa-solid fa-users"></i> Members</a></li>
+                <li><a href="/ContactUs/contact.html"><i class="fa-solid fa-phone"></i> Contact</a></li>
+            </ul>
 
-    
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Exam Results</h1>
+            <p>Select your class group to view the results.</p>
+        </header>
+
+        <div class="container">
+            <div class="card">
+                <div class="card-image">
+                    <img src="/images/s1.jpg" alt="Class 4-6">
+                    <div class="badge">Primary</div>
+                </div>
+                <div class="card-body">
+                    <h3>Class 4th to 6th</h3>
+                    <p>Check the latest year wise examination results and performance.</p>
+                    <a href="/Result/4thto6th.html" class="btn-primary">View Result <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="/images/s3.jpg" alt="Class 7-8">
+                    <div class="badge">Junior</div>
+                </div>
+                <div class="card-body">
+                    <h3>Class 7th to 8th</h3>
+                    <p>Check the latest year wise examination results and performance.</p>
+                    <a href="/Result/7thto8th.html" class="btn-primary">View Result <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="/images/s4.jpg" alt="Class 9-10">
+                    <div class="badge">Senior</div>
+                </div>
+                <div class="card-body">
+                    <h3>Class 9th to 10th</h3>
+                    <p>Check the latest year wise examination results and performance.</p>
+                    <a href="/Result/9thto10.html" class="btn-primary">View Result <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

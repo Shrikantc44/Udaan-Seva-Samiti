@@ -3,152 +3,512 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sahyogkarta</title>
+    <title>Udaan Seva Samiti - Sahyogkarta Members</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('/Members/sahyog.css');
         @import url('/Members/sahyogresp.css');
     </style>
 </head>
 <body>
+    <!-- Navigation Button -->
+    <div class="nav-back">
+        <a href="/Members/member.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Members
+        </a>
+    </div>
+
     <div class="container">
-        <h1>Sahyogkarta</h1>
-        <div class="cards">
-            <div class="card">
-                <img src="/images/photo1.jpg" alt="Image 1">
-                <h2>(संस्थापक)</h2>
-                <h3>Sunil Chauhan</h3>
+        <!-- Header Section -->
+        <div class="header-section">
+            <h1><i class="fas fa-handshake"></i> Sahyogkarta Members</h1>
+            <p class="subtitle">Our Esteemed Supporting Members</p>
+            <p class="description">Meet the dedicated individuals who provide valuable support and guidance to Udaan Seva Samiti, helping us achieve our mission of community service and development.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-section">
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">All Members</button>
+                <button class="filter-btn" data-filter="executive">Executive Committee</button>
+                <button class="filter-btn" data-filter="special">Special Supporters</button>
+                <button class="filter-btn" data-filter="members">General Members</button>
             </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 2">
-                <h3>(अध्यक्ष)</h3>
-                <h2>Awadesh Chauhan</h2>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search members...">
             </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>(उपा अध्यक्ष)</h3>
-                <h2>Brijesh Chauhan</h2>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <h3>Total Members</h3>
+                <p class="stat-number">28</p>
             </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 1">
-                <h3>(कोषाध्यक्ष)</h3>
-                <h2>Ajay Chauhan</h2>
+            <div class="stat-card">
+                <i class="fas fa-star"></i>
+                <h3>Executive Committee</h3>
+                <p class="stat-number">12</p>
             </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 2">
-                <h3>(विशेष सहयोगकर्ता)</h3>
-                <h2>Ramashray Chauhan(Teacher)</h2>
+            <div class="stat-card">
+                <i class="fas fa-award"></i>
+                <h3>Special Supporters</h3>
+                <p class="stat-number">2</p>
             </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>(विशेष सहयोगकर्ता)</h3>
-                <h2>Sanjay Chauhan</h2>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 1">
-                <h3>(संयोजक)</h3>
-                <h2>Manoj Chauhan</h2>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 2">
-                <h3>(सचिव)</h3>
-                <h2>Sunil Chauhan</h2>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>(सचिव)</h3>
-                <h2>Jalandhar Chauhan</h2>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 1">
-                <h3>(महामंत्री)</h3>
-                <h2>Pankaj Chauhan</h2>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 2">
-                <h3>(संगठन प्रवक्ता)</h3>
-                <h2>Ramsahay Chauhan</h2>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>(व्यवस्था मंत्री)</h3>
-                <h2>Ashok Chauhan</h2>
-            </div>
-            
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 1">
-                <h3>Angad Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 2">
-                <h3>Anil Chauhan(Shaka)</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Harendra Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 1">
-                <h3>Jaswant Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/jaisingh.jpg" alt="Image 2">
-                <h3>Jaisingh Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Jitendra Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Jitendra Chauhan(Ustaad)</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Kanaihya Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Pappu Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Rajesh Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Rajesh Chauhan(Khanna)</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Ramashish Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Ramsingh Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Ramesh Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Sitaram Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Shailesh Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Shivmurat Chauhan</h3>
-            </div>
-            <div class="card">
-                <img src="/images/logo.png" alt="Image 3">
-                <h3>Umashankar Chauhan</h3>
+        </div>
+
+        <!-- Executive Committee Section -->
+        <h2 class="section-title">
+            <i class="fas fa-crown"></i>
+            Executive Committee
+            <span class="section-badge">Leadership Team</span>
+        </h2>
+        
+        <div class="cards executive-cards">
+            <!-- Founder -->
+            <div class="card executive" data-category="executive">
+                <div class="card-image">
+                    <img src="/images/photo1.jpg" alt="Sunil Chauhan">
+                    <div class="card-badge founder">Founder</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Sunil Chauhan</h3>
+                    <p class="member-title">संस्थापक (Founder)</p>
+                    <p class="member-desc">Visionary founder who established Udaan Seva Samiti with the mission of community upliftment.</p>
+                    <div class="member-contact">
+                        <i class="fas fa-envelope"></i>
+                        <span>sunil@udaansamiti.org</span>
+                    </div>
+                </div>
             </div>
 
-            
+            <!-- President -->
+            <div class="card executive" data-category="executive">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Awadesh Chauhan">
+                    <div class="card-badge president">President</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Awadesh Chauhan</h3>
+                    <p class="member-title">अध्यक्ष (President)</p>
+                    <p class="member-desc">Leading the organization with strategic vision and guidance for all initiatives.</p>
+                    <div class="member-contact">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 XXXXX XXXXX</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vice President -->
+            <div class="card executive" data-category="executive">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Brijesh Chauhan">
+                    <div class="card-badge vice-president">Vice President</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Brijesh Chauhan</h3>
+                    <p class="member-title">उपाध्यक्ष (Vice President)</p>
+                    <p class="member-desc">Supporting organizational leadership and overseeing operational activities.</p>
+                    <div class="member-contact">
+                        <i class="fas fa-envelope"></i>
+                        <span>brijesh@udaansamiti.org</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Treasurer -->
+            <div class="card executive" data-category="executive">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Ajay Chauhan">
+                    <div class="card-badge treasurer">Treasurer</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Ajay Chauhan</h3>
+                    <p class="member-title">कोषाध्यक्ष (Treasurer)</p>
+                    <p class="member-desc">Managing financial resources and ensuring transparent financial operations.</p>
+                    <div class="member-contact">
+                        <i class="fas fa-university"></i>
+                        <span>Finance Head</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secretaries -->
+            <div class="card executive" data-category="executive">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Manoj Chauhan">
+                    <div class="card-badge coordinator">Coordinator</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Manoj Chauhan</h3>
+                    <p class="member-title">संयोजक (Coordinator)</p>
+                    <p class="member-desc">Coordinating various activities and ensuring smooth operations across teams.</p>
+                </div>
+            </div>
+
+            <div class="card executive" data-category="executive">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Sunil Chauhan">
+                    <div class="card-badge secretary">Secretary</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Sunil Chauhan</h3>
+                    <p class="member-title">सचिव (Secretary)</p>
+                    <p class="member-desc">Documenting proceedings and maintaining organizational records.</p>
+                </div>
+            </div>
+
+            <div class="card executive" data-category="executive">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Jalandhar Chauhan">
+                    <div class="card-badge secretary">Secretary</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Jalandhar Chauhan</h3>
+                    <p class="member-title">सचिव (Secretary)</p>
+                    <p class="member-desc">Assisting in administrative functions and communication management.</p>
+                </div>
+            </div>
+
+            <!-- General Secretary -->
+            <div class="card executive" data-category="executive">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Pankaj Chauhan">
+                    <div class="card-badge general-secretary">General Secretary</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Pankaj Chauhan</h3>
+                    <p class="member-title">महामंत्री (General Secretary)</p>
+                    <p class="member-desc">Overseeing general administration and organizational communication.</p>
+                </div>
+            </div>
+
+            <!-- Spokesperson -->
+            <div class="card executive" data-category="executive">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Ramsahay Chauhan">
+                    <div class="card-badge spokesperson">Spokesperson</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Ramsahay Chauhan</h3>
+                    <p class="member-title">संगठन प्रवक्ता (Organization Spokesperson)</p>
+                    <p class="member-desc">Representing the organization and managing public relations.</p>
+                </div>
+            </div>
+
+            <!-- Minister -->
+            <div class="card executive" data-category="executive">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Ashok Chauhan">
+                    <div class="card-badge minister">Minister</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Ashok Chauhan</h3>
+                    <p class="member-title">व्यवस्था मंत्री (Arrangement Minister)</p>
+                    <p class="member-desc">Managing logistical arrangements and event coordination.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Supporters Section -->
+        <h2 class="section-title">
+            <i class="fas fa-star"></i>
+            Special Supporters
+            <span class="section-badge">Key Contributors</span>
+        </h2>
+        
+        <div class="cards special-cards">
+            <div class="card special" data-category="special">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Ramashray Chauhan">
+                    <div class="card-badge teacher">Educator</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Ramashray Chauhan</h3>
+                    <p class="member-title">विशेष सहयोगकर्ता (Special Supporter)</p>
+                    <p class="member-desc">Teacher providing educational guidance and support to the organization.</p>
+                </div>
+            </div>
+
+            <div class="card special" data-category="special">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Sanjay Chauhan">
+                    <div class="card-badge supporter">Special Supporter</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Sanjay Chauhan</h3>
+                    <p class="member-title">विशेष सहयोगकर्ता (Special Supporter)</p>
+                    <p class="member-desc">Providing special support and resources for organizational development.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- General Members Section -->
+        <h2 class="section-title">
+            <i class="fas fa-user-friends"></i>
+            General Members
+            <span class="section-badge">Supporting Team</span>
+        </h2>
+        
+        <div class="cards general-cards">
+            <!-- General Members List -->
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Angad Chauhan">
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Angad Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Anil Chauhan">
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Anil Chauhan (Shaka)</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Harendra Chauhan">
+                   
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Harendra Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Jaswant Chauhan">
+                   
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Jaswant Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/jaisingh.jpg" alt="Jaisingh Chauhan">
+                   
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Jaisingh Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Jitendra Chauhan">
+                   
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Jitendra Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Jitendra Chauhan">
+                   
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Jitendra Chauhan (Ustaad)</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Kanaihya Chauhan">
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Kanaihya Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Pappu Chauhan">
+                   
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Pappu Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Rajesh Chauhan">
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Rajesh Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Rajesh Chauhan">
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Rajesh Chauhan (Khanna)</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Ramashish Chauhan">
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Ramashish Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Ramsingh Chauhan">
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Ramsingh Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Ramesh Chauhan">
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Ramesh Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Sitaram Chauhan">
+                   
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Sitaram Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Shailesh Chauhan">
+                   
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Shailesh Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Shivmurat Chauhan">
+                   
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Shivmurat Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+
+            <div class="card member" data-category="members">
+                <div class="card-image">
+                    <img src="/images/logo.png" alt="Umashankar Chauhan">
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="member-name">Umashankar Chauhan</h3>
+                    <p class="member-role">Active Member</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Note -->
+        <div class="footer-note">
+            <i class="fas fa-info-circle"></i>
+            <p>All Sahyogkarta members play a vital role in supporting Udaan Seva Samiti's mission. For membership inquiries, contact us at <strong>sahyog@udaansamiti.org</strong></p>
         </div>
     </div>
+
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.card');
+            const searchInput = document.getElementById('searchInput');
+            
+            // Filter by category
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    cards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'flex';
+                        } else {
+                            const category = card.getAttribute('data-category');
+                            if (category === filter) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // Search functionality
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                cards.forEach(card => {
+                    const name = card.querySelector('.member-name').textContent.toLowerCase();
+                    const title = card.querySelector('.member-title')?.textContent.toLowerCase() || '';
+                    const desc = card.querySelector('.member-desc')?.textContent.toLowerCase() || '';
+                    
+                    if (name.includes(searchTerm) || title.includes(searchTerm) || desc.includes(searchTerm)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

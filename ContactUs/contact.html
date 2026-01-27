@@ -3,48 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us</title>
-  <link rel="stylesheet" href="/ContactUs/contact.css" />
+  <title>Contact Us | Udaan Seva Samiti</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="contact.css" />
 </head>
 <body>
-  <div class="container">
+  <nav class="navbar">
+        <div class="logo">
+            <img src="/images/logo.png" alt="Udaan Seva Samiti Logo">
+        </div>
+
+        <!-- <div class="search-bar">
+            <input type="text" placeholder="Search ....">
+            <button><i class="fas fa-search"></i></button>
+        </div> -->
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="menu">
+            <li><a href="/index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="/Gallery/gallery.html"> <i class="fa-solid fa-image"></i> Gallery</a></li>
+            <li><a href="/PYQs/pyq.html"> <i class="fa-solid fa-book"></i> PYQ Paper</a></li>
+            <li><a href="/Result/result.html"> <i class="fa-solid fa-book"></i> Result</a></li>
+            <li><a href="/Members/member.html"> <i class="fa-solid fa-person"></i> Members</a></li>
+            <li><a href="/ContactUs/contact.html" class="active"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+        </ul>
+
+        <div class="sign-in">
+            <ul>
+                <li><i class="fa-solid fa-user"></i> <a href="/Bootstrap/login.html">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.menu').classList.toggle('active');
+        }
+    </script>
+    <div class="container">
     <h1>Contact Us</h1>
     <p>Please take a moment to get in touch, we will get back to you shortly.</p>
-    <p>"कृपया हमसे संपर्क करने के लिए एक क्षण निकालें, हम शीघ्र ही आपसे संपर्क करेंगे।"</p>
+    <p style="font-style: italic; font-size: 0.9em;">"कृपया हमसे संपर्क करने के लिए एक क्षण निकालें, हम शीघ्र ही आपसे संपर्क करेंगे।"</p>
+    
     <form id="contactForm">
       <div class="form-left">
         <label>Your Name</label>
-        <input type="text" name="name" required />
+        <input type="text" name="name" placeholder="Full Name" required />
         
         <label>Email Address</label>
-        <input type="email" name="email" required />
+        <input type="email" name="email" placeholder="example@mail.com" required />
         
         <label>Phone Number</label>
-        <input type="tel" name="phone" required />
+        <input type="tel" name="phone" placeholder="+91 xxxxx xxxxx" required />
         
         <label>How can we help you?</label>
         <select name="help">
-          <option>Choose one</option>
-          <option>General Inquiry</option>
-          <option>Support</option>
-          <option>Feedback</option>
+          <option value="">Choose one</option>
+          <option value="General Inquiry">General Inquiry</option>
+          <option value="Support">Support</option>
+          <option value="Feedback">Feedback</option>
         </select>
       </div>
 
       <div class="form-right">
         <label>Message</label>
-        <textarea name="message" rows="8" required></textarea>
+        <textarea name="message" rows="8" placeholder="Type your message here..." required></textarea>
         <div class="checkbox">
           <input type="checkbox" id="subscribe" name="subscribe" />
-          <label for="subscribe">Join our mailing list?</label>
+          <label for="subscribe" style="margin-top: 0;">Join our mailing list?</label>
         </div>
         <button type="submit">Send Message</button>
       </div>
     </form>
-    <p id="statusMsg" style="color: green; font-weight: bold;"></p>
+    <p id="statusMsg" style="color: green; font-weight: bold; margin-top: 15px;"></p>
   </div>
 
   <script src="/ContactUs/contact.js"></script>
 </body>
 </html>
-
