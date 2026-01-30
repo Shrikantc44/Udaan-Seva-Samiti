@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Udaan Seva Samiti - Admit Card 2026</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* --- Responsive Core Setup --- */
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f2f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px; /* Reduced for mobile comfort */
+        margin: 0;
+      }
+
+      /* Container Responsiveness */
+      .instruction-box,
+      .form-container {
+        width: 100%;
+        max-width: 750px;
+        margin-bottom: 20px;
+      }
+
+      .instruction-box {
+        background: #fff3cd;
+        border-left: 5px solid #ff9800;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        color: #856404;
+      }
+
+      .form-container {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-container h2 {
+        text-align: center;
+        color: #0056b3;
+        margin-top: 0;
+        font-size: 1.5rem;
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+      }
+
+      .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+      }
+
+      .btn-generate {
+        width: 100%;
+        padding: 14px;
+        background-color: #0056b3;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      /* --- Admit Card Wrapper (Desktop and Mobile) --- */
+      #admitCardWrapper {
+        display: none;
+        width: 100%;
+        max-width: 800px;
+        padding-bottom: 20px;
+      }
+
+      .admit-card {
+        width: 100%;
+        background: #fff;
+        border: 2px solid #0056b3;
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        margin: 0 auto;
+      }
+
+      /* Header Setup */
+      .header {
+        background: linear-gradient(90deg, #0056b3, #00aaff);
+        color: white;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        border-bottom: 4px solid #ff9800;
+      }
+
+      .header img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: white;
+        padding: 5px;
+      }
+
+      .header-text {
+        text-align: center;
+        flex-grow: 1;
+      }
+
+      .header-text h1 {
+        margin: 0;
+        font-size: 22px;
+      }
+
+      /* Card Content Layout */
+      .card-main {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+
+      .sidebar {
+        background: #0056b3;
+        color: #ff9800;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 18px;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+
+      .card-body {
+        display: flex;
+        padding: 20px;
+        position: relative;
+        flex-grow: 1;
+        flex-direction: column;
+        width: calc(100% - 40px);
+      }
+
+      .top-content {
+        display: flex;
+        width: 100%;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .watermark {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.15;
+        width: 250px;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .student-info {
+        flex: 2;
+        z-index: 1;
+      }
+
+      .info-row {
+        margin-bottom: 12px;
+        font-size: 15px;
+        border-bottom: 1px dotted #bbb;
+        padding-bottom: 3px;
+        word-break: break-word;
+      }
+
+      .info-row strong {
+        color: #0056b3;
+        width: 130px;
+        display: inline-block;
+      }
+
+      .photo-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+        min-width: 140px;
+      }
+
+      .photo-box {
+        width: 120px;
+        height: 140px;
+        border: 2px dashed #0056b3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #888;
+        font-size: 12px;
+        margin-bottom: 10px;
+        background: #fafafa;
+      }
+
+      .auto-signature {
+        font-family: "Dancing Script", cursive;
+        font-size: 24px;
+        color: #1a1a1a;
+        margin-bottom: -5px;
+      }
+
+      .sig-box {
+        border-top: 1px solid #333;
+        width: 140px;
+        text-align: center;
+        font-weight: bold;
+        padding-top: 5px;
+        font-size: 12px;
+      }
+
+      /* Instructions Section */
+      .print-instructions {
+        margin-top: 10px;
+        padding: 12px;
+        border-top: 2px solid #eee;
+        background: #fdfdfd;
+        font-size: 12px;
+        z-index: 1;
+      }
+
+      .print-instructions h4 {
+        margin: 0 0 8px 0;
+        color: #d35400;
+        text-align: center;
+      }
+
+      .ins-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .footer {
+        background: #0056b3;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .btn-print {
+        margin: 20px 0;
+        padding: 12px 30px;
+        background: #28a745;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      /* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
+
+      @media screen and (max-width: 650px) {
+        .top-content {
+          flex-direction: column; /* Stack info and photo */
+          align-items: center;
+        }
+
+        .student-info {
+          width: 100%;
+        }
+
+        .ins-grid {
+          grid-template-columns: 1fr; /* Stack instructions in one column */
+        }
+
+        .info-row strong {
+          width: 100px;
+          font-size: 14px;
+        }
+
+        .header-text h1 {
+          font-size: 18px;
+        }
+
+        /* Adjusting Card for mobile view without breaking print layout */
+        .admit-card {
+          min-width: unset;
+        }
+      }
+
+      @media screen and (max-width: 400px) {
+        .header {
+          flex-direction: column;
+          text-align: center;
+        }
+        .header img {
+          margin-bottom: 10px;
+        }
+      }
+
+      /* Print Settings */
+      @media print {
+        .form-container,
+        .instruction-box,
+        .btn-print,
+        h2 {
+          display: none !important;
+        }
+        body {
+          background: white;
+          padding: 0;
+        }
+        #admitCardWrapper {
+          display: block !important;
+          max-width: 100%;
+        }
+        .admit-card {
+          box-shadow: none;
+          border: 2px solid #000;
+          width: 100%;
+          border-radius: 0;
+        }
+        .ins-grid {
+          grid-template-columns: 1fr 1fr; /* Keep 2 columns on paper */
+        }
+        .top-content {
+          flex-direction: row; /* Keep photo on right on paper */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="instruction-box">
+      <h3 style="text-align: center; margin-bottom: 5px">
+        📋 निर्देश / Instructions
+      </h3>
+      <p style="text-align: center; margin: 0">
+        सही जानकारी भरें और एडमिट कार्ड डाउनलोड करें।
+      </p>
+    </div>
+
+    <div class="form-container">
+      <h2>Generate Your Admit Card</h2>
+      <div class="input-group">
+        <label>Student Name</label>
+        <input type="text" id="inName" placeholder="Full Name" />
+      </div>
+      <div class="input-group">
+        <label>Father's Name</label>
+        <input type="text" id="inFather" placeholder="Father's Name" />
+      </div>
+      <div class="input-group">
+        <label>Class</label>
+        <input type="text" id="inClass" placeholder="e.g. 10th" />
+      </div>
+      <div class="input-group">
+        <label>School Name</label>
+        <input type="text" id="inSchool" placeholder="Your School" />
+      </div>
+      <div class="input-group">
+        <label>Address</label>
+        <input type="text" id="inAddress" placeholder="City/Village" />
+      </div>
+      <button class="btn-generate" onclick="generateCard()">
+        Generate Admit Card
+      </button>
+    </div>
+
+    <div id="admitCardWrapper">
+      <div class="admit-card" id="printableCard">
+        <div class="header">
+          <img src="logo.png" alt="Logo" />
+          <div class="header-text">
+            <h1>UDAAN SEVA SAMITI (BIRAHI)</h1>
+            <p style="margin: 5px 0 0 0; font-size: 13px">
+              Contact: +91 7007523835 | Birahi, UP
+            </p>
+          </div>
+        </div>
+
+        <div class="card-main">
+          <div class="sidebar">EXAM ADMIT CARD 2026</div>
+          <div class="card-body">
+            <img src="logo.png" class="watermark" alt="USS" />
+            <div class="top-content">
+              <div class="student-info">
+                <div class="info-row">
+                  <strong>Name:</strong> <span id="outName"></span>
+                </div>
+                <div class="info-row">
+                  <strong>Father:</strong> <span id="outFather"></span>
+                </div>
+                <div class="info-row">
+                  <strong>Class:</strong> <span id="outClass"></span> &nbsp;
+                  <strong>Roll:</strong> <span id="outRoll"></span>
+                </div>
+                <div class="info-row">
+                  <strong>School:</strong> <span id="outSchool"></span>
+                </div>
+                <div class="info-row">
+                  <strong>Center:</strong> <span>Shiv Temple (Birahi)</span>
+                </div>
+                <div class="info-row">
+                  <strong>Address:</strong> <span id="outAddress"></span>
+                </div>
+              </div>
+              <div class="photo-area">
+                <div class="photo-box">Passport Size Photo</div>
+                <div class="auto-signature">Pankaj Chauhan</div>
+                <div class="sig-box">Auth. Signatory</div>
+              </div>
+            </div>
+
+            <div class="print-instructions">
+              <h4>परीक्षा के निर्देश / Exam Instructions</h4>
+              <div class="ins-grid">
+                <div class="ins-item">
+                  <strong>1.</strong> परीक्षा केंद्र पर स्कूल आईडी कार्ड और
+                  एडमिट कार्ड की हार्ड कॉपी लाना अनिवार्य है।<br />
+                  <small
+                    >Bringing School ID and hard copy of Admit Card is
+                    mandatory.</small
+                  >
+                </div>
+                <div class="ins-item">
+                  <strong>2.</strong> मोबाइल फोन, स्मार्ट वॉच या कोई भी
+                  इलेक्ट्रॉनिक उपकरण ले जाना सख्त वर्जित है।<br />
+                  <small
+                    >Mobile phones, smartwatches, or any electronic gadgets are
+                    strictly prohibited.</small
+                  >
+                </div>
+                <div class="ins-item">
+                  <strong>3.</strong> एडमिट कार्ड पर अपनी नवीनतम पासपोर्ट साइज
+                  फोटो चिपकाकर लाएं।<br />
+                  <small
+                    >Affix your latest passport-size photograph on the admit
+                    card.</small
+                  >
+                </div>
+                <div class="ins-item">
+                  <strong>4.</strong> परीक्षा शुरू होने से 1 घण्टा 30 मिनट पहले
+                  केंद्र पर पहुंचना सुनिश्चित करें।<br />
+                  <small
+                    >Ensure to reach the center 1 hour 30 minutes before the
+                    exam starts.</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">Website: udaansevasamity.netlify.app</div>
+      </div>
+      <center>
+        <button class="btn-print" onclick="window.print()">
+          🖨️ Print / Download PDF
+        </button>
+      </center>
+    </div>
+
+    <script>
+      function generateCard() {
+        const fields = ["inName", "inFather", "inClass"];
+        for (let id of fields) {
+          if (!document.getElementById(id).value.trim()) {
+            alert("Please fill Name, Father's Name and Class!");
+            return;
+          }
+        }
+
+        document.getElementById("outName").innerText = document
+          .getElementById("inName")
+          .value.toUpperCase();
+        document.getElementById("outFather").innerText = document
+          .getElementById("inFather")
+          .value.toUpperCase();
+        document.getElementById("outClass").innerText =
+          document.getElementById("inClass").value;
+        document.getElementById("outRoll").innerText =
+          "UDAAN-" + Math.floor(1000 + Math.random() * 9000);
+        document.getElementById("outSchool").innerText =
+          document.getElementById("inSchool").value || "N/A";
+        document.getElementById("outAddress").innerText =
+          document.getElementById("inAddress").value || "N/A";
+
+        document.getElementById("admitCardWrapper").style.display = "block";
+        window.scrollTo({
+          top: document.getElementById("admitCardWrapper").offsetTop - 10,
+          behavior: "smooth",
+        });
+      }
+    </script>
+  </body>
+</html>
