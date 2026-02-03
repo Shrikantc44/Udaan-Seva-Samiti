@@ -35,16 +35,17 @@
             <li><a href="/ContactUs/contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
 
             <li id="loginLi">
-                <a href="/Bootstrap/login.html" id="loginBtn">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </a>
-            </li>
+    <a href="/Bootstrap/login.html" id="loginBtn">
+        <i class="fas fa-sign-in-alt"></i> Login
+    </a>
+</li>
 
-            <li id="logoutLi" style="display: none;">
-                <a href="#" id="logoutBtn" style="color: #ff3333; font-weight: bold;">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
-            </li>
+<li id="logoutLi" style="display: none;">
+    <span id="userNameDisplay" style="color: white; margin-right: 10px;"></span>
+    <a href="#" id="logoutBtn" style="color: #ff3333; font-weight: bold; display: inline-block;">
+        <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+</li>
         </ul>
     </div>
 </nav>
@@ -286,11 +287,14 @@
 
       </footer>
 
-      <script src="script.js"></script>
-    <script>
-        function toggleMenu() { document.querySelector('.menu').classList.toggle('active'); }
+     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-        // Netlify Identity Logic for Home Page
+    <script src="script.js"></script>
+
+    <script>
+        // Netlify Identity Initialize
+        netlifyIdentity.init();
+
         document.addEventListener("DOMContentLoaded", () => {
             function updateUI(user) {
                 const loginLi = document.getElementById('loginLi');
@@ -298,19 +302,33 @@
                 const nameDisplay = document.getElementById('userNameDisplay');
                 
                 if (user) {
-                    loginLi.style.display = 'none';
-                    logoutLi.style.display = 'block';
-                    nameDisplay.textContent = user.user_metadata.full_name || "Member";
+                    // Jab user logged in ho
+                    if(loginLi) loginLi.style.display = 'none';
+                    if(logoutLi) logoutLi.style.display = 'block';
+                    
+                    // User ka naam display karna
+                    if(nameDisplay) {
+                        nameDisplay.textContent = "Hi, " + (user.user_metadata.full_name || user.email.split('@')[0]);
+                    }
                 } else {
-                    loginLi.style.display = 'block';
-                    logoutLi.style.display = 'none';
+                    // Jab user logged out ho
+                    if(loginLi) loginLi.style.display = 'block';
+                    if(logoutLi) logoutLi.style.display = 'none';
                 }
             }
 
+            // Netlify Events
             netlifyIdentity.on('init', user => updateUI(user));
-            netlifyIdentity.on('login', user => { updateUI(user); netlifyIdentity.close(); });
-            netlifyIdentity.on('logout', () => { updateUI(null); window.location.reload(); });
+            netlifyIdentity.on('login', user => { 
+                updateUI(user); 
+                netlifyIdentity.close(); // Login hone ke baad widget band kar dega
+            });
+            netlifyIdentity.on('logout', () => { 
+                updateUI(null); 
+                window.location.reload(); // Logout ke baad page refresh karega
+            });
 
+            // Logout button click event
             document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
                 e.preventDefault();
                 netlifyIdentity.logout();
