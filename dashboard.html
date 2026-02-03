@@ -15,6 +15,7 @@
         background: #f4f7f6;
         margin: 0;
         display: flex;
+        min-height: 100vh;
       }
       .sidebar {
         width: 250px;
@@ -23,27 +24,38 @@
         color: white;
         padding: 20px;
         position: fixed;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
       }
       .sidebar h3 {
         border-bottom: 2px solid rgba(255, 255, 255, 0.2);
         padding-bottom: 15px;
         margin-bottom: 20px;
+        color: white;
       }
       .sidebar p {
         margin: 15px 0;
         cursor: pointer;
         transition: 0.3s;
-        padding: 8px;
+        padding: 10px 15px;
         border-radius: 5px;
+        color: white;
+        font-weight: 500;
       }
       .sidebar p:hover {
         background: rgba(255, 255, 255, 0.2);
+        transform: translateX(5px);
+      }
+      .sidebar i {
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
       }
 
       .main-content {
         margin-left: 290px;
         padding: 40px;
-        width: 100%;
+        width: calc(100% - 290px);
+        min-height: 100vh;
       }
       .profile-card {
         background: white;
@@ -52,6 +64,7 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         max-width: 600px;
         text-align: center;
+        margin: 0 auto;
       }
 
       .profile-img-container img {
@@ -61,6 +74,7 @@
         border: 4px solid #ff9800;
         background: #fff;
         object-fit: cover;
+        margin-bottom: 20px;
       }
       .user-info h2 {
         color: #d35400;
@@ -76,6 +90,10 @@
         margin: 15px 0;
         font-size: 1.1rem;
         color: #333;
+        padding: 10px;
+        background: #f9f9f9;
+        border-radius: 5px;
+        border-left: 4px solid #ff9800;
       }
       .info-item i {
         color: #ff9800;
@@ -87,80 +105,187 @@
         background: #ff3333;
         color: white;
         border: none;
-        padding: 10px 20px;
+        padding: 12px 20px;
         border-radius: 5px;
         cursor: pointer;
         margin-top: 20px;
         width: 100%;
         font-weight: bold;
+        transition: 0.3s;
+      }
+      .logout-btn:hover {
+        background: #e60000;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(255, 51, 51, 0.3);
+      }
+
+      .error-message {
+        background: #ffe6e6;
+        color: #cc0000;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        margin: 50px auto;
+        max-width: 500px;
+        border: 1px solid #ff9999;
+      }
+
+      .error-message a {
+        color: #ff9800;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .error-message a:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
   <body>
     <div class="sidebar">
-      <h3>Udaan Seva Samiti</h3>
+      <h3><i class="fas fa-user-circle"></i> User Dashboard</h3>
       <p onclick="window.location.href = '/index.html'">
         <i class="fas fa-arrow-left"></i> Back to Home
       </p>
-      <hr style="opacity: 0.3" />
-      <p><i class="fas fa-user-circle"></i> Dashboard</p>
+      <hr style="opacity: 0.3; margin: 20px 0" />
+      <p><i class="fas fa-tachometer-alt"></i> Dashboard</p>
       <p onclick="window.location.href = '/AdmitCard/admitcard.html'">
         <i class="fas fa-file-alt"></i> My Admit Card
       </p>
       <p><i class="fas fa-poll"></i> My Result</p>
-      <button class="logout-btn" onclick="logout()">Logout</button>
+      <p><i class="fas fa-cog"></i> Settings</p>
+      <hr style="opacity: 0.3; margin: 20px 0" />
+      <button class="logout-btn" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
     </div>
 
-    <div class="main-content">
-      <div class="profile-card">
-        <div class="profile-img-container">
-          <img id="userAvatar" src="" alt="Profile" />
-        </div>
-        <div class="user-info">
-          <h2>Welcome, <span id="dashName">User</span>!</h2>
-          <div class="info-list">
-            <div class="info-item">
-              <i class="fas fa-envelope"></i> <strong>Email:</strong>
-              <span id="dashEmail"></span>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-phone"></i> <strong>Contact:</strong>
-              <span id="dashContact"></span>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-id-badge"></i> <strong>Member ID:</strong>
-              <span id="dashID"></span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="main-content" id="mainContent">
+      <!-- Content will be loaded here -->
     </div>
 
     <script>
+      // Initialize Netlify Identity
       netlifyIdentity.init();
-      netlifyIdentity.on("init", (user) => {
-        if (!user) {
-          window.location.href = "/Bootstrap/login.html";
+
+      // Check authentication status
+      function checkAuth() {
+        const mainContent = document.getElementById("mainContent");
+
+        // First check localStorage
+        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+        if (!isLoggedIn) {
+          // If not logged in via localStorage, check Netlify Identity
+          netlifyIdentity
+            .currentUser()
+            ?.then((user) => {
+              if (!user) {
+                showLoginError();
+              } else {
+                // User found - update localStorage and show dashboard
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem(
+                  "userName",
+                  user.user_metadata?.full_name || user.email,
+                );
+                showDashboard(user);
+              }
+            })
+            .catch(() => {
+              showLoginError();
+            });
         } else {
-          const fullName = user.user_metadata.full_name || "Member";
-          document.getElementById("dashName").textContent = fullName;
-          document.getElementById("dashEmail").textContent = user.email;
-          document.getElementById("dashContact").textContent =
-            user.user_metadata.contact_number || "Not Provided";
-          document.getElementById("dashID").textContent = user.id
-            .substring(0, 8)
-            .toUpperCase();
-          document.getElementById("userAvatar").src =
-            `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(fullName)}`;
+          // Already logged in per localStorage - get user info
+          netlifyIdentity
+            .currentUser()
+            ?.then((user) => {
+              if (user) {
+                showDashboard(user);
+              } else {
+                // In case localStorage says logged in but Netlify doesn't
+                localStorage.setItem("isLoggedIn", "false");
+                showLoginError();
+              }
+            })
+            .catch(() => {
+              showLoginError();
+            });
         }
-      });
+      }
+
+      // Function to show login error
+      function showLoginError() {
+        const mainContent = document.getElementById("mainContent");
+        mainContent.innerHTML = `
+          <div class="error-message">
+            <h3><i class="fas fa-exclamation-triangle"></i> Access Denied</h3>
+            <p>You need to be logged in to access the dashboard.</p>
+            <p>Please login to continue.</p>
+            <p style="margin-top: 20px;">
+              <a href="/Bootstrap/login.html">Click here to login</a> | 
+              <a href="/index.html">Go to Homepage</a>
+            </p>
+          </div>
+        `;
+      }
+
+      // Function to show dashboard
+      function showDashboard(user) {
+        const mainContent = document.getElementById("mainContent");
+        const fullName = user.user_metadata?.full_name || "Member";
+        const userEmail = user.email || "Not Available";
+        const userContact =
+          user.user_metadata?.contact_number || "Not Provided";
+        const userId = user.id ? user.id.substring(0, 8).toUpperCase() : "N/A";
+
+        mainContent.innerHTML = `
+          <div class="profile-card">
+            <div class="profile-img-container">
+              <img id="userAvatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(fullName)}" alt="Profile" />
+            </div>
+            <div class="user-info">
+              <h2>Welcome, ${fullName}!</h2>
+              <div class="info-list">
+                <div class="info-item">
+                  <i class="fas fa-envelope"></i> <strong>Email:</strong>
+                  <span id="dashEmail">${userEmail}</span>
+                </div>
+                <div class="info-item">
+                  <i class="fas fa-phone"></i> <strong>Contact:</strong>
+                  <span id="dashContact">${userContact}</span>
+                </div>
+                <div class="info-item">
+                  <i class="fas fa-id-badge"></i> <strong>Member ID:</strong>
+                  <span id="dashID">${userId}</span>
+                </div>
+                <div class="info-item">
+                  <i class="fas fa-calendar-alt"></i> <strong>Account Created:</strong>
+                  <span>${new Date(user.created_at).toLocaleDateString()}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Logout function
       function logout() {
         netlifyIdentity.logout();
+        localStorage.setItem("isLoggedIn", "false");
+        localStorage.removeItem("userName");
+        window.location.href = "/index.html";
       }
-      netlifyIdentity.on(
-        "logout",
-        () => (window.location.href = "/index.html"),
-      );
+
+      // Netlify logout event
+      netlifyIdentity.on("logout", () => {
+        localStorage.setItem("isLoggedIn", "false");
+        localStorage.removeItem("userName");
+        window.location.href = "/index.html";
+      });
+
+      // Check authentication on page load
+      document.addEventListener("DOMContentLoaded", checkAuth);
     </script>
   </body>
 </html>
