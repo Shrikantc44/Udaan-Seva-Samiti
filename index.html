@@ -1,580 +1,361 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Udaan Seva Samiti</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
-      @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
-      @import url("./css/style.css");
-      @import url("./css/responsive.css");
-      @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css");
-
-      /* Additional styles for auth state */
-      .auth-menu-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 15px;
-        border-radius: 5px;
-        transition: all 0.3s;
-      }
-
-      .dashboard-link {
-        color: #ff9800 !important;
-        background: rgba(255, 152, 0, 0.1);
-      }
-
-      .logout-link {
-        color: #ff3333 !important;
-        background: rgba(255, 51, 51, 0.1);
-      }
-
-      .auth-menu-item:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+        @import url('./css/style.css');
+        @import url('./css/responsive.css');
+        @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css');
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <!-- Navbar Start -->
-    <nav class="navbar">
-      <div class="logo">
-        <img src="./images/logo.png" alt="Logo" />
-      </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Search ...." />
-        <button><i class="fas fa-search"></i></button>
-      </div>
-      <div class="menu-toggle" onclick="toggleMenu()">
-        <i class="fas fa-bars"></i>
-      </div>
-      <div>
-        <ul class="menu">
-          <li>
-            <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-          </li>
-          <li>
-            <a href="/Gallery/gallery.html"
-              ><i class="fa-solid fa-image"></i> Gallery</a
-            >
-          </li>
-          <li>
-            <a href="./PYQs/pyq.html"
-              ><i class="fa-solid fa-book"></i> PYQ Paper</a
-            >
-          </li>
-          <li>
-            <a href="./Result/result.html"
-              ><i class="fa-solid fa-book"></i> Result</a
-            >
-          </li>
-          <li>
-            <a href="./Members/member.html"
-              ><i class="fa-solid fa-person"></i> Members</a
-            >
-          </li>
-          <li>
-            <a href="/ContactUs/contact.html"
-              ><i class="fa-solid fa-phone"></i> Contact Us</a
-            >
-          </li>
-
-          <!-- Login/Dashboard/Logout Links -->
-          <li id="loginLi">
-            <a href="/Bootstrap/login.html" class="auth-menu-item">
-              <i class="fas fa-sign-in-alt"></i> Login
-            </a>
-          </li>
-
-          <li id="dashboardLi" style="display: none">
-            <a href="/dashboard.html" class="auth-menu-item dashboard-link">
-              <i class="fas fa-user-circle"></i> Dashboard
-            </a>
-          </li>
-
-          <li id="logoutLi" style="display: none">
-            <a href="#" id="logoutBtn" class="auth-menu-item logout-link">
-              <i class="fas fa-sign-out-alt"></i> Logout
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <script>
-      function toggleMenu() {
-        document.querySelector(".menu").classList.toggle("active");
-      }
-    </script>
-
-    <!-- Navbar end -->
-    <marquee
-      direction="left"
-      scrollamount="6"
-      style="background: #ff9800; color: #fff; padding: 10px; font-weight: bold"
-    >
-      📢 IMPORTANT ANNOUNCEMENT: Exam registration form will be open in March
-      2026 (परीक्षा के लिए आवेदन मार्च 2026 में शुरू होंगे।)
-    </marquee>
-
-    <!-- Page 1 -->
-    <div class="page1">
-      <section class="about">
-        <h2>उड़ान सेवा समिति (बिरही) क्या है ?...</h2>
-        <br />
-        <p>
-          उड़ान सेवा समिति(बिरही) एक निःशुल्क संगठन है, जो विशेष रूप से चौहान
-          समुदाय के गाँवों के बच्चों को शिक्षा के प्रति प्रेरित करने के लिए
-          कार्य करता है। यह समिति शिक्षा के महत्व को समझते हुए हर वर्ष कक्षा
-          4वीं से 10वीं तक के विद्यार्थियों के लिए एक प्रतिस्पर्धात्मक परीक्षा
-          (कॉम्पिटिटिव एग्जाम) का आयोजन करती है। इस परीक्षा का मुख्य उद्देश्य
-          बच्चों में शैक्षणिक जागरूकता बढ़ाना और उन्हें भविष्य में उच्च स्तरीय
-          प्रतियोगी परीक्षाओं के लिए तैयार करना है।
-        </p>
-        <br />
-        <p>
-          समिति का यह प्रयास न केवल छात्रों की बौद्धिक क्षमताओं को विकसित करने
-          में सहायक होता है, बल्कि उन्हें आत्मविश्वास और प्रतिस्पर्धात्मक
-          दृष्टिकोण अपनाने के लिए भी प्रेरित करता है। इस परीक्षा के माध्यम से
-          बच्चों को अपनी क्षमताओं को परखने, अपनी कमजोरियों को समझने और समय रहते
-          उन्हें सुधारने का अवसर मिलता है। इसके अलावा, यह परीक्षा छात्रों को
-          शिक्षा के प्रति गंभीर बनाने और उनके उज्ज्वल भविष्य की दिशा में एक
-          मजबूत नींव तैयार करने में सहायता करती है।
-        </p>
-        <br />
-        <p>
-          उड़ान सेवा समिति का उद्देश्य ग्रामीण क्षेत्रों के छात्रों को उच्च
-          शिक्षा और प्रतियोगी परीक्षाओं की तैयारी के लिए एक उचित मंच प्रदान करना
-          है, ताकि वे भविष्य में सरकारी एवं अन्य प्रतिष्ठित परीक्षाओं में सफलता
-          प्राप्त कर सकें।
-        </p>
-      </section>
-      <section class="about1">
-        <img src="images/G7.jpg" alt="" />
-      </section>
+     <nav class="navbar">
+    <div class="logo">
+        <img src="./images/logo.png" alt="Logo">
     </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search ....">
+        <button><i class="fas fa-search"></i></button>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div>
+        <ul class="menu">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="/Gallery/gallery.html"><i class="fa-solid fa-image"></i> Gallery</a></li>
+            <li><a href="./PYQs/pyq.html"><i class="fa-solid fa-book"></i> PYQ Paper</a></li>
+            <li><a href="./Result/result.html"><i class="fa-solid fa-book"></i> Result</a></li>
+            <li><a href="./Members/member.html"><i class="fa-solid fa-person"></i> Members</a></li>
+            <li><a href="/ContactUs/contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+           
 
-    <!-- Slider -->
-    <div
-      id="carouselExample"
-      class="carousel slide custom-carousel"
-      data-bs-ride="carousel"
-    >
+            <li id="loginLi">
+    <a href="/Bootstrap/login.html" id="loginBtn">
+        <i class="fas fa-sign-in-alt"></i> Login
+    </a>
+</li>
+
+<li id="logoutLi" style="display: none;">
+    <span id="userNameDisplay" style="color: white; margin-right: 10px;"></span>
+    <a href="#" id="logoutBtn" style="color: #ff3333; font-weight: bold; display: inline-block;">
+        <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+</li>
+        </ul>
+    </div>
+</nav>
+      <script>
+        function toggleMenu() {
+            document.querySelector('.menu').classList.toggle('active');
+        }
+    </script>
+      
+      <!-- Navbar end -->
+    <marquee direction="left" scrollamount="6" 
+          style="background:#ff9800; color:#fff; padding:10px; font-weight:bold;">
+    📢 IMPORTANT ANNOUNCEMENT: Exam registration form will be open in March 2026 (परीक्षा के लिए आवेदन मार्च 2026 में शुरू होंगे।)
+    
+    </marquee>
+      <!-- Page 1 -->
+
+      <div class="page1">
+        <section class="about">
+          <h2>उड़ान सेवा समिति (बिरही) क्या है ?...  </h2><br>
+          <p>उड़ान सेवा समिति(बिरही) एक निःशुल्क संगठन है, जो विशेष रूप से चौहान समुदाय के गाँवों के बच्चों को शिक्षा के प्रति प्रेरित करने के लिए कार्य करता है। 
+            यह समिति शिक्षा के महत्व को समझते हुए हर वर्ष कक्षा 4वीं से 10वीं तक के विद्यार्थियों के लिए एक प्रतिस्पर्धात्मक परीक्षा (कॉम्पिटिटिव एग्जाम) का आयोजन करती है।
+            इस परीक्षा का मुख्य उद्देश्य बच्चों में शैक्षणिक जागरूकता बढ़ाना और उन्हें भविष्य में उच्च स्तरीय प्रतियोगी परीक्षाओं के लिए तैयार करना है।</p><br>
+          <p>समिति का यह प्रयास न केवल छात्रों की बौद्धिक क्षमताओं को विकसित करने में सहायक होता है, बल्कि उन्हें आत्मविश्वास और प्रतिस्पर्धात्मक दृष्टिकोण अपनाने के लिए 
+            भी प्रेरित करता है। इस परीक्षा के माध्यम से बच्चों को अपनी क्षमताओं को परखने, अपनी कमजोरियों को समझने और समय रहते उन्हें सुधारने का अवसर मिलता है।
+            इसके अलावा, यह परीक्षा छात्रों को शिक्षा के प्रति गंभीर बनाने और उनके उज्ज्वल भविष्य की दिशा में एक मजबूत नींव तैयार करने में सहायता करती है।</p> <br>
+          <p>उड़ान सेवा समिति का उद्देश्य ग्रामीण क्षेत्रों के छात्रों को उच्च शिक्षा और प्रतियोगी परीक्षाओं की तैयारी के लिए एक उचित मंच प्रदान करना है, ताकि वे भविष्य में 
+            सरकारी एवं अन्य प्रतिष्ठित परीक्षाओं में सफलता प्राप्त कर सकें।</p>
+          
+           
+        </section>
+        <section class="about1">
+            <img src="images/G7.jpg" alt="">
+        </section>
+      </div>
+
+      <!-- Slider -->
+
+      <div id="carouselExample" class="carousel slide custom-carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img
-            src="/images/slider1.png"
-            class="d-block custom-img"
-            alt="Slide 1"
-          />
+          <img src="/images/slider1.png" class="d-block custom-img" alt="Slide 1">
         </div>
         <div class="carousel-item">
-          <img src="/images/C15.jpg" class="d-block custom-img" alt="Slide 2" />
+          <img src="/images/C15.jpg" class="d-block custom-img" alt="Slide 2">
         </div>
         <div class="carousel-item">
-          <img src="/images/C24.jpg" class="d-block custom-img" alt="Slide 3" />
+          <img src="/images/C24.jpg" class="d-block custom-img" alt="Slide 3">
         </div>
         <div class="carousel-item">
-          <img src="/images/C16.jpg" class="d-block custom-img" alt="Slide 3" />
+          <img src="/images/C16.jpg" class="d-block custom-img" alt="Slide 3">
         </div>
         <div class="carousel-item">
-          <img src="/images/C18.jpg" class="d-block custom-img" alt="Slide 3" />
+          <img src="/images/C18.jpg" class="d-block custom-img" alt="Slide 3">
         </div>
         <div class="carousel-item">
-          <img src="/images/C19.jpg" class="d-block custom-img" alt="Slide 3" />
+          <img src="/images/C19.jpg" class="d-block custom-img" alt="Slide 3">
         </div>
         <div class="carousel-item">
-          <img src="/images/C20.jpg" class="d-block custom-img" alt="Slide 3" />
+          <img src="/images/C20.jpg" class="d-block custom-img" alt="Slide 3">
         </div>
         <div class="carousel-item">
-          <img src="/images/C12.jpg" class="d-block custom-img" alt="Slide 3" />
+          <img src="/images/C12.jpg" class="d-block custom-img" alt="Slide 3">
         </div>
         <div class="carousel-item">
-          <img src="/images/C21.jpg" class="d-block custom-img" alt="Slide 3" />
+          <img src="/images/C21.jpg" class="d-block custom-img" alt="Slide 3">
         </div>
       </div>
-      <button
-        class="carousel-control-prev custom-control"
-        type="button"
-        data-bs-target="#carouselExample"
-        data-bs-slide="prev"
-      >
+      <button class="carousel-control-prev custom-control" type="button" data-bs-target="#carouselExample"
+        data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button
-        class="carousel-control-next custom-control"
-        type="button"
-        data-bs-target="#carouselExample"
-        data-bs-slide="next"
-      >
+      <button class="carousel-control-next custom-control" type="button" data-bs-target="#carouselExample"
+        data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+
     <!-- Slider close -->
-
     <section>
-      <div
-        class="registration-box"
-        style="
-          background: #fff;
-          padding: 25px;
-          border-radius: 15px;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-          border-top: 5px solid #ff9800;
-        "
-      >
-        <div
-          class="reg-section"
-          style="margin-bottom: 30px; text-align: center"
-        >
-          <h4 style="color: #d35400; font-weight: bold">
-            <i class="fas fa-edit"></i> परीक्षा पंजीकरण (Exam Registration)
-          </h4>
-          <p>
-            Registration करने के लिए नीचे दी गयी लिंक पर क्लिक करके जल्दी
-            रजिस्ट्रेशन करें।
-          </p>
+    <div class="registration-box" style="background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #ff9800;">
+        
+        <div class="reg-section" style="margin-bottom: 30px; text-align: center;">
+            <h4 style="color: #d35400; font-weight: bold;"><i class="fas fa-edit"></i> परीक्षा पंजीकरण (Exam Registration)</h4>
+            <p>Registration करने के लिए नीचे दी गयी लिंक पर क्लिक करके जल्दी रजिस्ट्रेशन करें।</p>
+            
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 20px;">
+                
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdQhN9jl7Vbx21uKYiquWpk6CwaPmQzWH3ETFOigpoUvIJmLA/viewform?usp=sharing&ouid=104948319919762402034" target="_blank" class="reg-link" style="background: #ff9800; color: white; padding: 12px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
+                    <i class="fas fa-file-alt"></i> यहाँ क्लिक करें और रजिस्टर करें
+                </a>
 
-          <div
-            style="
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: center;
-              gap: 15px;
-              margin-bottom: 20px;
-            "
-          >
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdQhN9jl7Vbx21uKYiquWpk6CwaPmQzWH3ETFOigpoUvIJmLA/viewform?usp=sharing&ouid=104948319919762402034"
-              target="_blank"
-              class="reg-link"
-              style="
-                background: #ff9800;
-                color: white;
-                padding: 12px 25px;
-                text-decoration: none;
-                border-radius: 8px;
-                font-weight: bold;
-                display: inline-block;
-              "
-            >
-              <i class="fas fa-file-alt"></i> यहाँ क्लिक करें और रजिस्टर करें
-            </a>
+                <a href="/AdmitCard/admitcard.html" class="admit-link" style="background: #0056b3; color: white; padding: 12px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
+                    <i class="fas fa-download"></i> Download Your Admit Card
+                </a>
 
-            <a
-              href="/AdmitCard/admitcard.html"
-              class="admit-link"
-              style="
-                background: #0056b3;
-                color: white;
-                padding: 12px 25px;
-                text-decoration: none;
-                border-radius: 8px;
-                font-weight: bold;
-                display: inline-block;
-              "
-            >
-              <i class="fas fa-download"></i> Download Your Admit Card
-            </a>
-          </div>
-
-          <div
-            class="info-grid"
-            style="
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-              gap: 15px;
-              background: #fdf2e9;
-              padding: 20px;
-              border-radius: 10px;
-              text-align: left;
-            "
-          >
-            <div><strong>📅 Registration Start:</strong> 12345</div>
-            <div><strong>🚫 Registration End:</strong> 12345</div>
-            <div><strong>📝 Exam Date:</strong> 12345</div>
-            <div><strong>🏆 Result Date:</strong> 12345</div>
-            <div style="grid-column: 1 / -1">
-              <strong>📍 Exam Centre:</strong> abcdesgrg
             </div>
-          </div>
+
+            <div class="info-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; background: #fdf2e9; padding: 20px; border-radius: 10px; text-align: left;">
+                <div><strong>📅 Registration Start:</strong> 12345</div>
+                <div><strong>🚫 Registration End:</strong> 12345</div>
+                <div><strong>📝 Exam Date:</strong> 12345 </div>
+                <div><strong>🏆 Result Date:</strong> 12345 </div>
+                <div style="grid-column: 1 / -1;"><strong>📍 Exam Centre:</strong> abcdesgrg </div>
+            </div>
         </div>
 
-        <hr style="border: 1px dashed #ccc" />
+        <hr style="border: 1px dashed #ccc;">
 
-        <div
-          class="whatsapp-section"
-          style="text-align: center; padding-top: 10px"
-        >
-          <h4 style="color: #25d366">
-            <i class="fab fa-whatsapp"></i> व्हाट्सएप ग्रुप से जुड़ें (Join
-            Student Whatsapp Group)
-          </h4>
-          <p style="font-size: 0.95rem">
-            आगे आने वाली सभी सूचनाओं, परीक्षा से संबंधित अपडेट्स एवं अन्य
-            महत्वपूर्ण जानकारी प्राप्त करने के लिए नीचे दिए गए ग्रुप को जॉइन
-            करना <strong>अनिवार्य</strong> है।
-          </p>
-          <a
-            href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK"
-            target="_blank"
-            class="wa-link"
-            style="
-              background: #25d366;
-              color: white;
-              padding: 10px 20px;
-              text-decoration: none;
-              border-radius: 50px;
-              font-weight: bold;
-              display: inline-block;
-              transition: 0.3s;
-              box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-            "
-          >
-            <i class="fab fa-whatsapp"></i> व्हाट्सएप ग्रुप जॉइन करें
-          </a>
+        <div class="whatsapp-section" style="text-align: center; padding-top: 10px;">
+            <h4 style="color: #25d366;"><i class="fab fa-whatsapp"></i> व्हाट्सएप ग्रुप से जुड़ें (Join Student Whatsapp Group)</h4>
+            <p style="font-size: 0.95rem;">
+                आगे आने वाली सभी सूचनाओं, परीक्षा से संबंधित अपडेट्स एवं अन्य महत्वपूर्ण जानकारी प्राप्त करने के लिए नीचे दिए गए ग्रुप को जॉइन करना <strong>अनिवार्य</strong> है।
+            </p>
+            <a href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" class="wa-link" style="background: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; transition: 0.3s; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);">
+                <i class="fab fa-whatsapp"></i> व्हाट्सएप ग्रुप जॉइन करें
+            </a>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
+     
 
-    <!-- Parallax Effect -->
-    <div class="parallax"></div>
+      <!-- Parallax Effect -->
+      <div class="parallax"></div>
 
-    <div class="content">
-      <h2>Welcome to Udaan Seva Samiti (Birahi)</h2>
+      <div class="content">
+    <h2>Welcome to Udaan Seva Samiti (Birahi)</h2>
 
-      <p>
-        Udaan Seva Samiti (Birahi) is a free, non-profit organization dedicated
-        to supporting students from rural and underprivileged backgrounds by
-        providing quality education and guidance for competitive examinations.
-      </p>
+    <p>
+        Udaan Seva Samiti (Birahi) is a free, non-profit organization dedicated to supporting 
+        students from rural and underprivileged backgrounds by providing quality education 
+        and guidance for competitive examinations.
+    </p>
 
-      <p>
-        Our organization conducts free examinations, practice tests, and talent
-        assessment programs to help students identify their strengths and
-        improve their academic performance. We strongly believe that financial
-        limitations should never become a barrier to education.
-      </p>
+    <p>
+        Our organization conducts free examinations, practice tests, and talent assessment 
+        programs to help students identify their strengths and improve their academic performance.
+        We strongly believe that financial limitations should never become a barrier to education.
+    </p>
 
-      <p>
-        Through our initiatives, we aim to build confidence, discipline, and a
-        competitive spirit among students, preparing them for a better and
-        brighter future.
-      </p>
+    <p>
+        Through our initiatives, we aim to build confidence, discipline, and a competitive spirit 
+        among students, preparing them for a better and brighter future.
+    </p>
 
-      <ul>
+    <ul>
         <li>Free competitive examinations for students</li>
         <li>Focus on Classes 4th to 10th</li>
         <li>Guidance by experienced mentors</li>
         <li>Motivation and career awareness programs</li>
-      </ul>
-    </div>
+    </ul>
+</div>
 
-    <div class="page1">
-      <section class="about text-center">
+  
+
+       <div class="page1">
+    <section class="about text-center">
         <h2>आपका एक छोटा सा सहयोग, संवार सकता है किसी का कल 🌟</h2>
         <p class="donation-msg">
-          "शिक्षा ही वह माध्यम है जिससे हम समाज में बदलाव ला सकते हैं। आपकी
-          उदारता किसी जरूरतमंद छात्र के जीवन में उम्मीद की नई किरण जगा सकती है।
-          सहायता के लिए विवरण नीचे दिया गया है।"
+            "शिक्षा ही वह माध्यम है जिससे हम समाज में बदलाव ला सकते हैं। आपकी उदारता किसी जरूरतमंद छात्र के जीवन में उम्मीद की नई किरण जगा सकती है। सहायता के लिए विवरण नीचे दिया गया है।"
         </p>
-
+        
         <div class="bank-card">
-          <h3>
-            <i class="fas fa-hand-holding-heart"></i> बैंक खाता विवरण(Bank
-            Details)
-          </h3>
-          <div class="bank-info">
-            <p>
-              <i class="fas fa-university"></i> <strong>Bank:</strong> State
-              Bank of India
-            </p>
-            <p>
-              <i class="fas fa-user-circle"></i>
-              <strong>A/C Holder:</strong>Udaan Seva Samiti
-            </p>
-            <p>
-              <i class="fas fa-hashtag"></i>
-              <strong>A/C No:</strong> 123456789012345
-            </p>
-            <p>
-              <i class="fas fa-code"></i> <strong>IFSC:</strong> SBIN0012345
-            </p>
-            <p>
-              <i class="fas fa-map-marker-alt"></i>
-              <strong>Branch:</strong> Birahi, UP
-            </p>
-          </div>
+            <h3><i class="fas fa-hand-holding-heart"></i> बैंक खाता विवरण(Bank Details)</h3>
+            <div class="bank-info">
+                <p><i class="fas fa-university"></i> <strong>Bank:</strong> State Bank of India</p>
+                <p><i class="fas fa-user-circle"></i> <strong>A/C Holder:</strong>Udaan Seva Samiti</p>
+                <p><i class="fas fa-hashtag"></i> <strong>A/C No:</strong> 123456789012345</p>
+                <p><i class="fas fa-code"></i> <strong>IFSC:</strong> SBIN0012345</p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Branch:</strong> Birahi, UP</p>
+            </div>
         </div>
-      </section>
 
-      <section class="about1">
+       
+    </section>
+
+    <section class="about1">
         <div class="qr-container">
-          <img src="images/qr.jpg" alt="Scan to Pay" class="qr-img" />
+            <img src="images/qr.jpg" alt="Scan to Pay" class="qr-img">
+            <!-- <p><strong>Scan & Support</strong></p>
+            <span class="upi-id">UPI ID: example@sbi</span> -->
         </div>
-      </section>
-    </div>
+    </section>
+</div>
 
-    <div class="parallax1"></div>
 
-    <!-- Footer start -->
-    <footer>
-      <div class="footer-container">
-        <!-- Contact Information Section -->
-        <div class="contact-info">
+
+      <div class="parallax1"></div>
+
+      
+       
+
+      <!-- Footer start -->
+      <footer>
+        <div class="footer-container">
+           <!-- Contact Information Section -->
+         <div class="contact-info">
           <h3>Contact Us</h3>
-          <p>
-            <strong>Email:</strong
-            ><a href="mailto:udaansamiti4@gmail.com"
-              >udaansevasamiti4@gmail.com</a
-            >
-          </p>
-          <p>
-            <strong>Phone:</strong><a href="tel:+917007523835">7007523835</a>
-          </p>
-        </div>
-        <div class="quick-links">
-          <!-- Quick links section -->
-          <h3>Quick links</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="/Gallery/gallery.html">Gallery</a></li>
-            <li><a href="./PYQs/pyq.html">PYQ Paper</a></li>
-            <li><a href="./Result/result.html">Results</a></li>
-            <li><a href="./Members/member.html">Members</a></li>
-            <li><a href="./ContactUs/contact.html">Contact Us</a></li>
-          </ul>
-        </div>
+          <p><strong>Email:</strong><a href="mailto:udaansamiti4@gmail.com">udaansevasamiti4@gmail.com</a></p>
+          <p><strong>Phone:</strong><a href="tel:+917007523835">7007523835</a></p>
+         </div>
+          <div class="quick-links">
+            <!-- Quick links section -->
+            <h3>Quick links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="/Gallery/gallery.html">Gallery</a></li>
+                <li><a href="./PYQs/pyq.html">PYQ Paper</a></li>
+                <li><a href="./Result/result.html">Results</a></li>
+                <li><a href="./Members/member.html">Members</a></li>
+                <li><a href="./ContactUs/contact.html">Contact Us</a></li>
+            </ul>
+          </div>
 
-        <!-- Google map section -->
-        <div class="map">
-          <h3>Our Location</h3>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.50190144041383!2d83.04036084600168!3d25.97719653456373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3991b19a442c51c1%3A0xdaccef8d9160e62c!2sShiv%20Temple!5e1!3m2!1sen!2sin!4v1743277382247!5m2!1sen!2sin"
-            width="100%"
-            height="200"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+         
+
+         <!-- Google map section -->
+          
+         <div class="map">
+            <h3>Our Location</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.50190144041383!2d83.04036084600168!3d25.97719653456373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3991b19a442c51c1%3A0xdaccef8d9160e62c!2sShiv%20Temple!5e1!3m2!1sen!2sin!4v1743277382247!5m2!1sen!2sin"
+             width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
         </div>
-      </div>
 
       <!-- Copyright Section -->
-      <div class="copyright">
-        <p>© 2026 Udaan Seva Samiti (Birahi). All Rights Reserved.</p>
-        <div class="designer">
-          <span>Designed by Shrikant Chauhan</span>
-          <img src="images/shrikant.jpg" alt="Shrikant Chauhan" />
-        </div>
-      </div>
-    </footer>
+    <div class="copyright">
+    <p>© 2026 Udaan Seva Samiti (Birahi). All Rights Reserved.</p>
 
-    <!-- Authentication Management Script -->
+    <div class="designer">
+        <span>Designed by Shrikant Chauhan</span>
+        <img src="images/shrikant.jpg" alt="Shrikant Chauhan">
+        
+    </div>
+</div>
+
+      </footer>
+
+     
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="script.js"></script>
+
     <script>
-      // Initialize Netlify Identity
-      netlifyIdentity.init();
+    // 1. Netlify Identity ko initialize karein
+    netlifyIdentity.init();
 
-      // Function to update navigation based on login state
-      function updateNavigation() {
-        const loginLi = document.getElementById("loginLi");
-        const dashboardLi = document.getElementById("dashboardLi");
-        const logoutLi = document.getElementById("logoutLi");
+    document.addEventListener("DOMContentLoaded", () => {
+        function updateUI(user) {
+            const loginLi = document.getElementById('loginLi');
+            const logoutLi = document.getElementById('logoutLi');
+            const nameDisplay = document.getElementById('userNameDisplay');
+            
+            if (user) {
+                // Agar user login hai, toh "Login" link ko puri tarah hide karo
+                if(loginLi) {
+                    loginLi.setAttribute('style', 'display: none !important');
+                }
+                
+                // Logout section aur Dashboard link dikhao
+                if(logoutLi) {
+                    logoutLi.style.display = 'flex';
+                    logoutLi.style.alignItems = 'center';
+                }
 
-        // Check localStorage for login status
-        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-
-        if (isLoggedIn) {
-          // User is logged in - Show Dashboard and Logout
-          if (loginLi) loginLi.style.display = "none";
-          if (dashboardLi) dashboardLi.style.display = "block";
-          if (logoutLi) logoutLi.style.display = "block";
-        } else {
-          // User is logged out - Show Login
-          if (loginLi) loginLi.style.display = "block";
-          if (dashboardLi) dashboardLi.style.display = "none";
-          if (logoutLi) logoutLi.style.display = "none";
+                // User icon aur Dashboard link Navbar mein set karein
+                if(nameDisplay) {
+                    nameDisplay.innerHTML = `
+                        <a href="/dashboard.html" title="Go to Dashboard" style="color: #ff9800; font-size: 1.1rem; text-decoration: none; margin-right: 15px; font-weight: bold;">
+                            <i class="fas fa-user-circle"></i> Dashboard
+                        </a>`;
+                }
+            } else {
+                // Agar user logout hai, toh wapas "Login" button dikhao
+                if(loginLi) {
+                    loginLi.style.display = 'block';
+                }
+                // Logout section hide karo
+                if(logoutLi) {
+                    logoutLi.style.display = 'none';
+                }
+            }
         }
-      }
 
-      // Function to handle logout
-      function handleLogout() {
-        netlifyIdentity.logout();
-        localStorage.setItem("isLoggedIn", "false");
-        localStorage.removeItem("userName");
-        updateNavigation();
-        window.location.href = "/index.html";
-      }
-
-      // Netlify Identity event handlers
-      netlifyIdentity.on("init", (user) => {
-        if (user) {
-          localStorage.setItem("isLoggedIn", "true");
-          localStorage.setItem(
-            "userName",
-            user.user_metadata?.full_name || user.email,
-          );
-        } else {
-          localStorage.setItem("isLoggedIn", "false");
-          localStorage.removeItem("userName");
-        }
-        updateNavigation();
-      });
-
-      netlifyIdentity.on("login", (user) => {
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem(
-          "userName",
-          user.user_metadata?.full_name || user.email,
-        );
-        updateNavigation();
-        netlifyIdentity.close();
-        window.location.href = "/dashboard.html";
-      });
-
-      netlifyIdentity.on("logout", () => {
-        localStorage.setItem("isLoggedIn", "false");
-        localStorage.removeItem("userName");
-        updateNavigation();
-        window.location.href = "/index.html";
-      });
-
-      // Set up logout button event listener
-      document.addEventListener("DOMContentLoaded", () => {
-        updateNavigation();
-
-        // Add click event to logout button
-        document.getElementById("logoutBtn")?.addEventListener("click", (e) => {
-          e.preventDefault();
-          handleLogout();
+        // Netlify Identity ke events handle karein
+        netlifyIdentity.on('init', user => updateUI(user));
+        
+        netlifyIdentity.on('login', user => {
+            updateUI(user);
+            netlifyIdentity.close();
+            // Login hote hi seedha dashboard par bhejein
+            window.location.href = "/dashboard.html";
         });
 
-        // Check current user status
-        netlifyIdentity
-          .currentUser()
-          ?.then((user) => {
-            if (user) {
-              localStorage.setItem("isLoggedIn", "true");
-              localStorage.setItem(
-                "userName",
-                user.user_metadata?.full_name || user.email,
-              );
-            } else {
-              localStorage.setItem("isLoggedIn", "false");
-              localStorage.removeItem("userName");
-            }
-            updateNavigation();
-          })
-          .catch(() => {
-            localStorage.setItem("isLoggedIn", "false");
-            updateNavigation();
-          });
-      });
-    </script>
-  </body>
+        netlifyIdentity.on('logout', () => {
+            updateUI(null);
+            // Logout hone par home page par wapas laayein
+            window.location.href = "/index.html";
+        });
+
+        // Logout button par click karne par trigger karein
+        document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            netlifyIdentity.logout();
+        });
+    });
+</script>
+</body>
 </html>
