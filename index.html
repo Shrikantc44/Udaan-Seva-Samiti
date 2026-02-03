@@ -288,61 +288,69 @@
 
       </footer>
 
-     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-    <script src="script.js"></script>
+     
 
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="script.js"></script>
 
     <script>
-    // Netlify Identity Initialize
+    // 1. Netlify Identity ko initialize karein
     netlifyIdentity.init();
 
     document.addEventListener("DOMContentLoaded", () => {
-        // UI update karne wala function
         function updateUI(user) {
             const loginLi = document.getElementById('loginLi');
             const logoutLi = document.getElementById('logoutLi');
             const nameDisplay = document.getElementById('userNameDisplay');
             
             if (user) {
-                // Agar user login hai:
-                if(loginLi) loginLi.style.display = 'none'; // Login button chhupao
-                if(logoutLi) logoutLi.style.display = 'block'; // Logout button dikhao
+                // Agar user login hai, toh "Login" link ko puri tarah hide karo
+                if(loginLi) {
+                    loginLi.setAttribute('style', 'display: none !important');
+                }
                 
-                // Dashboard button dikhao (Style ke saath)
+                // Logout section aur Dashboard link dikhao
+                if(logoutLi) {
+                    logoutLi.style.display = 'flex';
+                    logoutLi.style.alignItems = 'center';
+                }
+
+                // User icon aur Dashboard link Navbar mein set karein
                 if(nameDisplay) {
                     nameDisplay.innerHTML = `
-                        <a href="/dashboard.html" style="color: #ff9800; text-decoration: none; font-weight: bold; border: 2px solid #ff9800; padding: 6px 12px; border-radius: 8px; transition: 0.3s; display: inline-block;">
-                            <i class="fas fa-th-large"></i> My Dashboard
+                        <a href="/dashboard.html" title="Go to Dashboard" style="color: #ff9800; font-size: 1.1rem; text-decoration: none; margin-right: 15px; font-weight: bold;">
+                            <i class="fas fa-user-circle"></i> Dashboard
                         </a>`;
                 }
             } else {
-                // Agar user login nahi hai:
-                if(loginLi) loginLi.style.display = 'block';
-                if(logoutLi) logoutLi.style.display = 'none';
-                if(nameDisplay) nameDisplay.innerHTML = "";
+                // Agar user logout hai, toh wapas "Login" button dikhao
+                if(loginLi) {
+                    loginLi.style.display = 'block';
+                }
+                // Logout section hide karo
+                if(logoutLi) {
+                    logoutLi.style.display = 'none';
+                }
             }
         }
 
-        // Netlify Identity Events
+        // Netlify Identity ke events handle karein
         netlifyIdentity.on('init', user => updateUI(user));
-
-        netlifyIdentity.on('login', user => { 
-            updateUI(user); 
-            netlifyIdentity.close(); 
-            // Login hote hi Dashboard par bhejo
-            window.location.href = "/dashboard.html"; 
+        
+        netlifyIdentity.on('login', user => {
+            updateUI(user);
+            netlifyIdentity.close();
+            // Login hote hi seedha dashboard par bhejein
+            window.location.href = "/dashboard.html";
         });
 
-        netlifyIdentity.on('logout', () => { 
-            updateUI(null); 
-            // Logout hone par Home page refresh karo
-            window.location.href = "/index.html"; 
+        netlifyIdentity.on('logout', () => {
+            updateUI(null);
+            // Logout hone par home page par wapas laayein
+            window.location.href = "/index.html";
         });
 
-        // Logout button par click ka event
+        // Logout button par click karne par trigger karein
         document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
             e.preventDefault();
             netlifyIdentity.logout();
