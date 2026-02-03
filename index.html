@@ -33,6 +33,7 @@
             <li><a href="./Result/result.html"><i class="fa-solid fa-book"></i> Result</a></li>
             <li><a href="./Members/member.html"><i class="fa-solid fa-person"></i> Members</a></li>
             <li><a href="/ContactUs/contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+           
 
             <li id="loginLi">
     <a href="/Bootstrap/login.html" id="loginBtn">
@@ -295,51 +296,58 @@
     <script src="script.js"></script>
 
     <script>
-        // Netlify Identity Initialize
-        netlifyIdentity.init();
+    // Netlify Identity Initialize
+    netlifyIdentity.init();
 
-        document.addEventListener("DOMContentLoaded", () => {
-            function updateUI(user) {
-                const loginLi = document.getElementById('loginLi');
-                const logoutLi = document.getElementById('logoutLi');
-                const nameDisplay = document.getElementById('userNameDisplay');
-                
-                if (user) {
-                    if(loginLi) loginLi.style.display = 'none';
-                    if(logoutLi) logoutLi.style.display = 'block';
-                    
-                    if(nameDisplay) {
-                        // User ka naam aur Dashboard link
-                        nameDisplay.innerHTML = `<a href="/dashboard.html" style="color:white; text-decoration:none; font-weight:bold;">
-                            Hi, ${user.user_metadata.full_name || user.email.split('@')[0]} (My Dashboard)
-                        </a>`;
-                    }
-                } else {
-                    if(loginLi) loginLi.style.display = 'block';
-                    if(logoutLi) logoutLi.style.display = 'none';
-                }
-            }
-
-            // Events
-            netlifyIdentity.on('init', user => updateUI(user));
+    document.addEventListener("DOMContentLoaded", () => {
+        // UI update karne wala function
+        function updateUI(user) {
+            const loginLi = document.getElementById('loginLi');
+            const logoutLi = document.getElementById('logoutLi');
+            const nameDisplay = document.getElementById('userNameDisplay');
             
-            netlifyIdentity.on('login', user => { 
-                updateUI(user); 
-                netlifyIdentity.close(); 
-                // Yahan redirected logic add kar diya hai
-                window.location.href = "/dashboard.html"; 
-            });
+            if (user) {
+                // Agar user login hai:
+                if(loginLi) loginLi.style.display = 'none'; // Login button chhupao
+                if(logoutLi) logoutLi.style.display = 'block'; // Logout button dikhao
+                
+                // Dashboard button dikhao (Style ke saath)
+                if(nameDisplay) {
+                    nameDisplay.innerHTML = `
+                        <a href="/dashboard.html" style="color: #ff9800; text-decoration: none; font-weight: bold; border: 2px solid #ff9800; padding: 6px 12px; border-radius: 8px; transition: 0.3s; display: inline-block;">
+                            <i class="fas fa-th-large"></i> My Dashboard
+                        </a>`;
+                }
+            } else {
+                // Agar user login nahi hai:
+                if(loginLi) loginLi.style.display = 'block';
+                if(logoutLi) logoutLi.style.display = 'none';
+                if(nameDisplay) nameDisplay.innerHTML = "";
+            }
+        }
 
-            netlifyIdentity.on('logout', () => { 
-                updateUI(null); 
-                window.location.href = "/index.html"; 
-            });
+        // Netlify Identity Events
+        netlifyIdentity.on('init', user => updateUI(user));
 
-            document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
-                e.preventDefault();
-                netlifyIdentity.logout();
-            });
+        netlifyIdentity.on('login', user => { 
+            updateUI(user); 
+            netlifyIdentity.close(); 
+            // Login hote hi Dashboard par bhejo
+            window.location.href = "/dashboard.html"; 
         });
-    </script>
+
+        netlifyIdentity.on('logout', () => { 
+            updateUI(null); 
+            // Logout hone par Home page refresh karo
+            window.location.href = "/index.html"; 
+        });
+
+        // Logout button par click ka event
+        document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            netlifyIdentity.logout();
+        });
+    });
+</script>
 </body>
 </html>
