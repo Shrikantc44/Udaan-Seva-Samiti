@@ -248,3 +248,13 @@ footer{
             color: #555;
             margin-top: 10px;
         }
+
+        /* Custom Logout Button Style */
+        .logoutbtn {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }

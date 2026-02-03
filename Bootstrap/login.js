@@ -1,64 +1,71 @@
 function toggleForm() {
-  const mode = document.getElementById('formTitle');
-  const signupFields = document.getElementById('signupFields');
-  const confirmPasswordField = document.getElementById('confirmPasswordField');
-  const resetLink = document.getElementById('resetPassword');
-  const toggleText = document.getElementById('toggleText');
-  const button = document.getElementById('submitButton');
+    const mode = document.getElementById('formTitle');
+    const signupFields = document.getElementById('signupFields');
+    const confirmPasswordField = document.getElementById('confirmPasswordField');
+    const toggleText = document.getElementById('toggleText');
+    const button = document.getElementById('submitButton');
 
-  if (mode.textContent === 'Sign In') {
-    mode.textContent = 'Sign Up';
-    signupFields.classList.remove('hidden');
-    confirmPasswordField.classList.remove('hidden');
-    resetLink.style.display = 'none';
-    toggleText.innerHTML = "Already have an account? <a href='#' onclick='toggleForm()'>Sign in</a>";
-    button.textContent = 'Register';
-  } else {
-    mode.textContent = 'Sign In';
-    signupFields.classList.add('hidden');
-    confirmPasswordField.classList.add('hidden');
-    resetLink.style.display = 'inline-block';
-    toggleText.innerHTML = "Don't have an account? <a href='#' onclick='toggleForm()'>Sign up</a>";
-    button.textContent = 'Sign In';
-  }
+    if (mode.textContent === 'Sign In') {
+        mode.textContent = 'Sign Up';
+        signupFields.classList.remove('hidden');
+        confirmPasswordField.classList.remove('hidden');
+        toggleText.innerHTML = "Already have an account? <a href='#' onclick='toggleForm()'>Sign in</a>";
+        button.textContent = 'Register';
+    } else {
+        mode.textContent = 'Sign In';
+        signupFields.classList.add('hidden');
+        confirmPasswordField.classList.add('hidden');
+        toggleText.innerHTML = "Don't have an account? <a href='#' onclick='toggleForm()'>Sign up</a>";
+        button.textContent = 'Sign In';
+    }
 }
 
 function togglePassword(fieldId) {
-  const field = document.getElementById(fieldId);
-  field.type = field.type === 'password' ? 'text' : 'password';
+    const field = document.getElementById(fieldId);
+    field.type = field.type === 'password' ? 'text' : 'password';
 }
 
+// Google External Login Logic
+document.getElementById('googleLoginBtn').addEventListener('click', () => {
+    netlifyIdentity.loginExternal('google');
+});
+
+// Netlify Identity Logic for Email/Password
 document.getElementById('authForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const mode = document.getElementById('formTitle').textContent;
-  const email = document.getElementById('email');
-  const password = document.getElementById('password');
-  const confirmPassword = document.getElementById('confirmPassword');
-  const fullName = document.getElementById('fullName');
-  const contact = document.getElementById('contact');
-  let isValid = true;
+    e.preventDefault();
+    
+    const mode = document.getElementById('formTitle').textContent;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-  if (!email.value.includes('@')) {
-    alert("Please enter a valid email.");
-    isValid = false;
-  }
-  if (password.value.length < 6) {
-    alert("Password must be at least 6 characters.");
-    isValid = false;
-  }
-  if (mode === 'Sign Up') {
-    if (!fullName.value || !contact.value) {
-      alert("Please fill all required fields.");
-      isValid = false;
-    }
-    if (password.value !== confirmPassword.value) {
-      alert("Passwords do not match.");
-      isValid = false;
-    }
-  }
+    if (mode === 'Sign Up') {
+        const fullName = document.getElementById('fullName').value;
+        const contact = document.getElementById('contact').value;
+        const confirmPass = document.getElementById('confirmPassword').value;
 
-  if (isValid) {
-    alert(`${mode} successful!`);
-    this.reset();
-  }
+        if (password !== confirmPass) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        netlifyIdentity.signup(email, password, { 
+            full_name: fullName, 
+            data: { contact: contact } // Updated metadata structure
+        }).then(
+            (user) => {
+                alert("Registration successful! Please check your email for confirmation.");
+                toggleForm();
+            },
+            (err) => alert("Error: " + err.message)
+        );
+
+    } else {
+        netlifyIdentity.login(email, password).then(
+            (user) => {
+                alert("Login successful!");
+                window.location.href = "/index.html";
+            },
+            (err) => alert("Login failed: " + err.message)
+        );
+    }
 });
