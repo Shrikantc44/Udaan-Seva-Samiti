@@ -1,6 +1,7 @@
-// Netlify Identity Initialize karna zaroori hai
+// Netlify Identity Initialize
 netlifyIdentity.init();
 
+// Form toggle logic (Sign In vs Sign Up)
 function toggleForm() {
     const mode = document.getElementById('formTitle');
     const signupFields = document.getElementById('signupFields');
@@ -23,15 +24,15 @@ function toggleForm() {
     }
 }
 
-// Password toggle function
+// Password visibility toggle
 function togglePassword(fieldId) {
     const field = document.getElementById(fieldId);
     field.type = field.type === 'password' ? 'text' : 'password';
 }
 
 // Google Login Trigger
-document.getElementById('googleLoginBtn').addEventListener('click', () => {
-    netlifyIdentity.open('login'); // Google ke liye widget open karna best practice hai
+document.getElementById('googleLoginBtn')?.addEventListener('click', () => {
+    netlifyIdentity.open('login'); 
 });
 
 // Form Submit Logic
@@ -52,7 +53,7 @@ document.getElementById('authForm').addEventListener('submit', function(e) {
             return;
         }
 
-        // Netlify GoTrue Signup for custom data
+        // Registration Logic
         netlifyIdentity.gotrue.signup(email, password, { 
             full_name: fullName, 
             user_metadata: { 
@@ -68,11 +69,12 @@ document.getElementById('authForm').addEventListener('submit', function(e) {
         );
 
     } else {
-        // Login Logic
+        // Login Logic with Dashboard Redirect
         netlifyIdentity.gotrue.login(email, password, true).then(
             (user) => {
                 alert("Login successful!");
-                window.location.href = "/index.html";
+                // Yahan humne redirect change kar diya hai
+                window.location.href = "/dashboard.html"; 
             },
             (err) => alert("Login failed: " + err.message)   
         );
