@@ -7,71 +7,44 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <style>
     @import url('/Bootstrap/login.css');
-    .hidden { display: none; }
-    
-    /* Google Button Styling */
+    .hidden { display: none !important; }
     .google-btn {
-      background: white;
-      color: #444;
-      border: 1px solid #ddd;
-      padding: 10px;
-      border-radius: 5px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background 0.3s;
+      background: white; color: #444; border: 1px solid #ddd; padding: 12px;
+      border-radius: 5px; font-weight: bold; display: flex; align-items: center;
+      justify-content: center; gap: 10px; width: 100%; cursor: pointer; margin-top: 15px;
     }
-    .google-btn:hover { background: #f1f1f1; }
-    .divider { text-align: center; margin: 15px 0; color: #888; font-size: 0.9rem; }
+    .divider { text-align: center; margin: 15px 0; color: #888; }
+    #submitButton { width: 100%; padding: 12px; background: #000; color: #fff; border: none; cursor: pointer; }
   </style>
 </head>
 <body>
-
-<div class="modal-container" id="modalContainer">
+<div class="modal-container">
   <div class="modal-box">
     <div class="left-panel">
       <img src="/images/logo.png" alt="Logo" class="logo">
-      <ul>
-        <li>शिक्षा एवं करियर के क्षेत्र में सही मार्गदर्शन।</li>
-        <li>जरूरतमंद छात्रों को प्रतियोगी परीक्षाओं में सहायता।</li>
-        <li>समाज के हर वर्ग तक अवसरों की पहुँच।</li>
-      </ul>
+      <p>शिक्षा एवं करियर के क्षेत्र में सही मार्गदर्शन।</p>
     </div>
     <div class="right-panel">
       <h2 id="formTitle">Sign In</h2>
       <form id="authForm">
         <div id="signupFields" class="hidden">
-          <input type="text" id="fullName" placeholder="Enter Full Name">
-          <input type="tel" id="contact" placeholder="Enter Contact Number">
+          <input type="text" id="fullName" placeholder="Full Name">
         </div>
-        <input type="email" id="email" placeholder="Enter Your Email" required>
-        <div class="password-wrapper">
-          <input type="password" id="password" placeholder="Enter Your Password" required>
-          <span class="toggle-password" onclick="togglePassword('password')">👁</span>
-        </div>
-        <div id="confirmPasswordField" class="password-wrapper hidden">
-          <input type="password" id="confirmPassword" placeholder="Enter Confirm Password">
-          <span class="toggle-password" onclick="togglePassword('confirmPassword')">👁</span>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <div id="confirmPasswordField" class="hidden">
+          <input type="password" id="confirmPassword" placeholder="Confirm Password">
         </div>
         <button type="submit" id="submitButton">Sign In</button>
       </form>
-
       <div class="divider">OR</div>
       <button type="button" class="google-btn" id="googleLoginBtn">
-        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" alt="Google Logo">
-        Continue with Google
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18"> Continue with Google
       </button>
-
-      <p id="toggleText">Don't have an account? <a href="#" onclick="toggleForm()">Sign up</a></p>
+      <p id="toggleText" style="margin-top:10px;">Don't have an account? <a href="#" onclick="toggleForm()">Sign up</a></p>
     </div>
   </div>
 </div>
-
 <script src="/Bootstrap/login.js"></script>
 </body>
 </html>

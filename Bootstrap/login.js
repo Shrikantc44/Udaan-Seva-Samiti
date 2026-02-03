@@ -1,3 +1,4 @@
+// Toggle Form functionality
 function toggleForm() {
     const mode = document.getElementById('formTitle');
     const signupFields = document.getElementById('signupFields');
@@ -20,52 +21,35 @@ function toggleForm() {
     }
 }
 
-function togglePassword(fieldId) {
-    const field = document.getElementById(fieldId);
-    field.type = field.type === 'password' ? 'text' : 'password';
-}
+// Netlify Logic
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Google Login Fix
+    document.getElementById('googleLoginBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log("Google Login Triggered");
+        netlifyIdentity.loginExternal('google');
+    });
 
-// Google External Login Logic
-document.getElementById('googleLoginBtn').addEventListener('click', () => {
-    netlifyIdentity.loginExternal('google');
-});
+    // 2. Auth Form (Email/Pass) Fix
+    document.getElementById('authForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const mode = document.getElementById('formTitle').textContent;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-// Netlify Identity Logic for Email/Password
-document.getElementById('authForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const mode = document.getElementById('formTitle').textContent;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+        if (mode === 'Sign Up') {
+            const fullName = document.getElementById('fullName').value;
+            const confirmPass = document.getElementById('confirmPassword').value;
 
-    if (mode === 'Sign Up') {
-        const fullName = document.getElementById('fullName').value;
-        const contact = document.getElementById('contact').value;
-        const confirmPass = document.getElementById('confirmPassword').value;
+            if (password !== confirmPass) { alert("Passwords don't match!"); return; }
 
-        if (password !== confirmPass) {
-            alert("Passwords do not match!");
-            return;
+            netlifyIdentity.signup(email, password, { full_name: fullName })
+                .then(() => alert("Verification email sent! Check your inbox."))
+                .catch(err => alert("Signup error: " + err.message));
+        } else {
+            netlifyIdentity.login(email, password)
+                .then(() => window.location.href = "/index.html")
+                .catch(err => alert("Login error: " + err.message));
         }
-
-        netlifyIdentity.signup(email, password, { 
-            full_name: fullName, 
-            data: { contact: contact } // Updated metadata structure
-        }).then(
-            (user) => {
-                alert("Registration successful! Please check your email for confirmation.");
-                toggleForm();
-            },
-            (err) => alert("Error: " + err.message)
-        );
-
-    } else {
-        netlifyIdentity.login(email, password).then(
-            (user) => {
-                alert("Login successful!");
-                window.location.href = "/index.html";
-            },
-            (err) => alert("Login failed: " + err.message)
-        );
-    }
+    });
 });
