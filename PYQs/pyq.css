@@ -19,7 +19,7 @@ body {
 .navbar {
     width: 100%;
     height: 50px;
-    background-color: #00bcd4;
+    background-color: #3bebd7;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -313,7 +313,7 @@ footer {
 .footer-container h3 {
     font-size: 1.3rem;
     margin-bottom: 20px;
-    color: #00ffff9e;
+    color: #052e2e9e;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -325,13 +325,13 @@ footer {
 }
 
 .contact-info a {
-    color: #00ffff;
+    color: #021616;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .contact-info a:hover {
-    color: #00bcd4;
+    color: #d40083;
     text-decoration: underline;
 }
 
@@ -354,7 +354,7 @@ footer {
 }
 
 .quick-links ul li a:hover {
-    color: #00ffff;
+    color: #061e1e;
     transform: translateX(5px);
 }
 

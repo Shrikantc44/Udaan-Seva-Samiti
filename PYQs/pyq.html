@@ -6,45 +6,18 @@
     <title>PYQs | Udaan Seva Samiti</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="pyq.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 </head>
 <body>
 
 <!-- Navbar Start -->
-<nav class="navbar">
-    <div class="logo">
-        <img src="/images/logo.png" alt="Udaan Seva Samiti Logo">
-    </div>
-    
-    <div class="search-bar">
-        <input type="text" placeholder="Search ....">
-        <button><i class="fas fa-search"></i></button>
-    </div>
-    
-    <div class="menu-toggle" onclick="toggleMenu()">
-        <i class="fas fa-bars"></i>
-    </div>
-    
-    <div class="menu-container">
-        <ul class="menu">
-            <li><a href="/index.html"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a href="/Gallery/gallery.html"> <i class="fa-solid fa-image"></i> Gallery</a></li>
-            <li><a href="/PYQs/pyq.html" class="active"> <i class="fa-solid fa-book"></i> PYQ Paper</a></li>
-            <li><a href="/Result/result.html"> <i class="fa-solid fa-book"></i> Result</a></li>
-            <li><a href="/Members/member.html"> <i class="fa-solid fa-person"></i> Members</a></li>
-            <li><a href="/ContactUs/contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
-        </ul>
-    </div>
-    
-    <div class="sign-in">
-        <ul>
-            <li><i class="fa-solid fa-user"></i><a href="/Bootstrap/login.html">Sign In</a></li>
-        </ul>
-    </div>
-</nav>
+    <div id="navbar-placeholder"></div>
+    <!-- Navbar end -->
 
 <div class="main-content">
     <div class="pyq-header">
-        <h1><i class="fas fa-book-open"></i> Previous Year Question Papers</h1>
+        <h1></i> Previous Year Question Papers</h1>
         <p class="subtitle">Access past papers to prepare for upcoming exams</p>
     </div>
 
@@ -93,40 +66,17 @@
     </div>
 </div>
 
-<footer>
-    <div class="footer-container">
-        <div class="contact-info">
-            <h3><i class="fas fa-address-book"></i> Contact Us</h3>
-            <p><strong>Email:</strong> <a href="mailto:udaansamiti4@gmail.com">udaansamiti4@gmail.com</a></p>
-            <p><strong>Phone:</strong> <a href="tel:+917007523835">7007523835</a></p>
-        </div>
-        <div class="quick-links">
-            <h3><i class="fas fa-link"></i> Quick Links</h3>
-            <ul>
-                <li><a href="/index.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="/Gallery/gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
-                <li><a href="/PYQs/pyq.html"><i class="fas fa-book"></i> PYQ Paper</a></li>
-                <li><a href="/Result/result.html"><i class="fas fa-award"></i> Results</a></li>
-                <li><a href="/Members/member.html"><i class="fas fa-users"></i> Members</a></li>
-                <li><a href="/ContactUs/contact.html"><i class="fas fa-phone"></i> Contact Us</a></li>
-            </ul>
-        </div>
-        <div class="map">
-            <h3><i class="fas fa-map-marker-alt"></i> Our Location</h3>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.50190144041383!2d83.04036084600168!3d25.97719653456373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3991b19a442c51c1%3A0xdaccef8d9160e62c!2sShiv%20Temple!5e1!3m2!1sen!2sin!4v1743277382247!5m2!1sen!2sin"
-             width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </div>
-    <div class="copyright">
-        <p>© 2026 Udaan Seva Samiti(Birahi). All Rights Reserved.</p>
-        <p>Designed by Shrikant Chauhan</p>
-    </div>
-</footer>
+
 
 <script>
     function toggleMenu() {
         document.querySelector('.menu').classList.toggle('active');
     }
 </script>
+
+<div id="footer-placeholder"></div>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <script src="/js/include.js"></script>
 </body>
 </html>

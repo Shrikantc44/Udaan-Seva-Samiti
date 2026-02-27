@@ -9,42 +9,13 @@
         @import url('/Gallery/style.css');
         @import url('/Gallery/gallery.css');
         @import url('/Gallery/responsive.css');
+        @import url('/css/style.css');
+        @import url('/css/responsive.css');
     </style>
 </head>
 <body>
     <!-- Navbar Start -->
-    <nav class="navbar">
-        <div class="logo">
-            <img src="/Gallery/logo.png" alt="Udaan Seva Samiti Logo">
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search ....">
-            <button><i class="fas fa-search"></i></button>
-        </div>
-        <div class="menu-toggle" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div>
-            <ul class="menu">
-                <li><a href="/index.html"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li><a href="/Gallery/gallery.html"> <i class="fa-solid fa-image"></i> Gallery</a></li>
-                <li><a href="/PYQs/pyq.html"> <i class="fa-solid fa-book"></i> PYQ Paper</a></li>
-                <li><a href="/Result/result.html"> <i class="fa-solid fa-book"></i> Result</a></li>
-                <li><a href="/Members/member.html"> <i class="fa-solid fa-person"></i> Members</a></li>
-                <li><a href="/ContactUs/contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
-            </ul>
-        </div>
-        <div class="sign-in">
-            <ul>
-                <li><i class="fa-solid fa-user"></i><a href="/Bootstrap/login.html">Sign In</a> </li>
-            </ul>
-        </div>
-    </nav>
-    <script>
-        function toggleMenu() {
-            document.querySelector('.menu').classList.toggle('active');
-        }
-    </script>
+    <div id="navbar-placeholder"></div>
     <!-- Navbar end -->
 
     <!-- Gallery Start -->
@@ -171,11 +142,11 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="gallery-footer">
-        <p>© 2026 Udaan Seva Samiti(Birahi). All rights reserved.</p>
-        <p>Capturing moments that inspire change and community development</p>
-    </footer>
+    <div id="footer-placeholder"></div>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <script src="/js/include.js"></script>
+    
 
 </body>
 </html>

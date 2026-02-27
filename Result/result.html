@@ -9,36 +9,15 @@
         @import url('/Result/result.css'); 
         @import url('/Result/style.css');
         @import url('/Result/responsive.css');  
+        @import url('/css/style.css');
+        @import url('/css/responsive.css');
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="/Gallery/logo.png" alt="Logo">
-                
-            </div>
-            
-            <div class="search-bar">
-                <input type="text" placeholder="Search results...">
-                <button><i class="fas fa-search"></i></button>
-            </div>
-
-            <ul class="menu" id="navMenu">
-                <li><a href="/index.html"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li><a href="/Gallery/gallery.html"><i class="fa-solid fa-image"></i> Gallery</a></li>
-                <li><a href="/PYQs/pyq.html"><i class="fa-solid fa-book"></i> PYQ</a></li>
-                <li><a href="/Result/result.html" class="active"><i class="fa-solid fa-graduation-cap"></i> Result</a></li>
-                <li><a href="/Members/member.html"><i class="fa-solid fa-users"></i> Members</a></li>
-                <li><a href="/ContactUs/contact.html"><i class="fa-solid fa-phone"></i> Contact</a></li>
-            </ul>
-
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+   <!-- Navbar Start -->
+    <div id="navbar-placeholder"></div>
+    <!-- Navbar end -->
 
     <main class="main-content">
         <header class="page-header">
@@ -90,5 +69,10 @@
             document.getElementById('navMenu').classList.toggle('active');
         }
     </script>
+
+    <div id="footer-placeholder"></div>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <script src="/js/include.js"></script>
 </body>
 </html>

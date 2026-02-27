@@ -147,6 +147,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 15px;
+    flex-wrap: wrap; 
+    width: 100%;    
 }
 
 .subtitle {
@@ -292,14 +294,17 @@ body {
 .features p {
     margin: 10px 0;
     color: #555;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    display: grid; 
+    grid-template-columns: 20px 1fr;
+    gap: 12px;
+    align-items: start;
+    width: 100%;
 }
 
 .features i {
     color: #00bcd4;
     font-size: 1rem;
+    margin-top: 4px;
 }
 
 .button {
