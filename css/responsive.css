@@ -1,75 +1,144 @@
+/* Hide menu toggle by default (Desktop) */
+.menu-toggle {
+    display: none;
+}
+
+/* ================= TABLET VIEW ================= */
+
 @media (max-width: 1024px) {
+
     .menu {
         gap: 15px;
     }
+
     .search-bar input {
         width: 150px;
     }
+
 }
 
+/* ================= MOBILE VIEW ================= */
+
 @media (max-width: 768px) {
+
+    /* Navbar */
     .navbar {
         flex-direction: column;
         height: auto;
         padding: 10px;
+        position: relative;   /* IMPORTANT ADD */
     }
+
+    /* Hamburger icon */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;      /* ADD */
+        font-size: 24px;      /* ADD */
+        z-index: 1001;        /* ADD */
+        position: relative;   /* ADD */
+    }
+
+    /* Menu */
     .menu {
         flex-direction: column;
         gap: 10px;
         display: none;
+        width: 100%;          /* ADD */
+        background: #333;     /* ADD */
+        position: absolute;   /* ADD */
+        top: 60px;            /* ADD */
+        left: 0;              /* ADD */
+        z-index: 999;         /* ADD */
+        padding: 0;           /* ADD */
+        margin: 0;            /* ADD */
     }
+
     .menu.active {
         display: flex;
     }
-    .menu-toggle {
-        display: block;
+
+    .menu li {
+        list-style: none;     /* ADD */
+        text-align: center;   /* ADD */
+        border-bottom: 1px solid #444; /* ADD */
     }
+
+    .menu li a {
+        display: block;       /* ADD */
+        padding: 12px;        /* ADD */
+        color: white;         /* ADD */
+        text-decoration: none;
+    }
+
+    .menu li a:hover {
+        background: #ff9800;  /* ADD */
+        color: white;
+    }
+
+    /* Page Layout */
+
     .page1 {
         flex-direction: column;
         align-items: center;
         height: auto;
     }
+
     .about1 img {
         width: 90%;
         height: auto;
     }
-    .parallax, .parallax1 {
+
+    .parallax,
+    .parallax1 {
         height: 200px;
     }
+
     .footer-container {
         flex-direction: column;
         align-items: center;
     }
+
 }
 
+/* ================= SMALL MOBILE ================= */
+
 @media (max-width: 480px) {
+
     .search-bar input {
         width: 120px;
     }
+
     .menu {
         gap: 5px;
     }
+
     .page1 {
         padding: 10px;
     }
+
     .about h2 {
         font-size: 18px;
     }
+
     .about p {
         font-size: 14px;
     }
-    .parallax, .parallax1 {
+
+    .parallax,
+    .parallax1 {
         height: 150px;
     }
+
     .content {
         padding: 30px;
     }
+
     .quick-links ul li {
         text-align: center;
     }
+
     .map iframe {
         height: 150px;
     }
+
 }
-
-
