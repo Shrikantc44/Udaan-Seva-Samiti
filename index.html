@@ -14,6 +14,7 @@
     </style>
 </head>
 <body>
+    
 
     <!-- Navbar start -->
       <div id="navbar-placeholder"></div>
@@ -40,8 +41,42 @@
         </section>
       </div>
 
-      <!-- Slider -->
+      <!--Page 1 end-->
 
+      <!-- Gemini AI Chatbot HTML -->
+      <div class="chatbot-container">
+          <div class="chatbot-toggle" id="chatbotToggle">
+              <i class="fas fa-robot"></i>
+          </div>
+          <div class="chatbot-window" id="chatbotWindow">
+              <div class="chatbot-header">
+                  <h3><i class="fab fa-google"></i> उड़ान AI सहायक</h3>
+                  <i class="fas fa-times close-chat" id="closeChat"></i>
+              </div>
+              <div class="chat-messages" id="chatMessages">
+                  <div class="message bot">
+                      <div class="message-avatar">
+                          <i class="fas fa-robot"></i>
+                      </div>
+                      <div class="message-content">
+                          🙏 नमस्ते! मैं उड़ान सेवा समिति का AI सहायक हूँ।<br><br>
+                          मैं आपकी मदद कर सकता हूँ:<br>
+                          📝 परीक्षा पंजीकरण और तिथियाँ<br>
+                          📍 संगठन की जानकारी<br>
+                          💰 दान विवरण<br>
+                          📱 व्हाट्सएप ग्रुप<br><br>
+                          कृपया पूछिए! Ask me anything! 😊
+                      </div>
+                  </div>
+              </div>
+              <div class="chat-input-area">
+                  <input type="text" id="chatInput" placeholder="अपना सवाल लिखें... Type your question..." onkeypress="handleKeyPress(event)">
+                  <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+              </div>
+          </div>
+      </div>
+
+      <!-- Slider -->
       <div id="carouselExample" class="carousel slide custom-carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -212,75 +247,283 @@
     <script src="./js/include.js"></script>
     <script src="script.js"></script>
 
+    <!-- Gemini AI Chatbot JavaScript -->
     <script>
+    // ============================================
+    // 🔑 YOUR GEMINI API KEY - PUT YOUR KEY HERE
+    // ============================================
+    const GEMINI_API_KEY = "AQ.Ab8RN6Ksf0eprLbiU2YRpZKtwORGVjwf-D7o5uN_PRT44JAFLQ";
+    // IMPORTANT: Replace with your actual key from Google AI Studio
+    // Example: const GEMINI_API_KEY = "AQ.Ab8RN6Ksf0eprLbiU2YRpZKtwORGVjwF-D7o5uN_PRT44JAFLQ";
 
+    // Gemini API endpoint
+    const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
+
+    // Organization information for the AI
+    const ORGANIZATION_INFO = `उड़ान सेवा समिति (बिरही) के बारे में जानकारी:
+
+    संगठन का नाम: उड़ान सेवा समिति (बिरही)
+    प्रकार: निःशुल्क गैर-लाभकारी संगठन
+    उद्देश्य: ग्रामीण क्षेत्रों के छात्रों को शिक्षा और प्रतियोगी परीक्षाओं के लिए मार्गदर्शन
+    लक्ष्य छात्र: कक्षा 4वीं से 10वीं तक
+    स्थान: बिरही, उत्तर प्रदेश
+
+    मुख्य सेवाएँ:
+    - निःशुल्क प्रतियोगी परीक्षाएँ
+    - अभ्यास परीक्षण और प्रतिभा मूल्यांकन
+    - करियर जागरूकता कार्यक्रम
+
+    दान हेतु बैंक विवरण:
+    - बैंक: स्टेट बैंक ऑफ इंडिया (SBI)
+    - खाताधारक: उड़ान सेवा समिति
+    - IFSC: SBIN0012345
+
+    महत्वपूर्ण लिंक:
+    - परीक्षा पंजीकरण: होमपेज पर "परीक्षा पंजीकरण" बटन
+    - एडमिट कार्ड: "Download Your Admit Card" बटन
+    - व्हाट्सएप ग्रुप: होमपेज पर हरा बटन
+
+    नियम:
+    - हमेशा मददगार और मित्रवत रहें
+    - हिंदी और इंग्लिश दोनों में जवाब दें
+    - संक्षिप्त और स्पष्ट जवाब दें`;
+
+    // DOM Elements
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    const closeChat = document.getElementById('closeChat');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const chatMessages = document.getElementById('chatMessages');
+
+    // Toggle chat window
+    if (chatbotToggle) {
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('active');
+        });
+    }
+
+    if (closeChat) {
+        closeChat.addEventListener('click', () => {
+            chatbotWindow.classList.remove('active');
+        });
+    }
+
+    // Send message function
+    async function sendMessage() {
+        const message = chatInput.value.trim();
+        if (message === '') return;
+        
+        addMessage(message, 'user');
+        chatInput.value = '';
+        showTypingIndicator();
+        
+        try {
+            let response;
+            
+            if (GEMINI_API_KEY === "YOUR_API_KEY_HERE") {
+                response = "⚠️ कृपया अपनी Gemini API key कॉन्फ़िगर करें। Google AI Studio से key प्राप्त करें और कोड में 'YOUR_API_KEY_HERE' को replace करें।";
+            } else {
+                response = await getGeminiResponse(message);
+            }
+            
+            removeTypingIndicator();
+            addMessage(response, 'bot');
+        } catch (error) {
+            console.error('Error:', error);
+            removeTypingIndicator();
+            addMessage("क्षमा करें, तकनीकी समस्या आ गई है। कृपया पुनः प्रयास करें। 🙏", 'bot');
+        }
+    }
+
+    // Call Gemini API
+    async function getGeminiResponse(userMessage) {
+        const requestBody = {
+            contents: [{
+                parts: [{
+                    text: `${ORGANIZATION_INFO}\n\nउपयोगकर्ता का प्रश्न: ${userMessage}\n\nकृपया मददगार जवाब दें (हिंदी/इंग्लिश में):`
+                }]
+            }],
+            generationConfig: {
+                temperature: 0.7,
+                maxOutputTokens: 500,
+                topP: 0.95
+            }
+        };
+        
+        const response = await fetch(`${API_URL}?key=${GEMINI_API_KEY}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody)
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('API Error:', errorData);
+            
+            if (response.status === 403) {
+                return "🔑 API key गलत है या समाप्त हो गई है। कृपया जाँच करें।";
+            } else if (response.status === 429) {
+                return "📊 बहुत सारे अनुरोध हो गए। कृपया कुछ देर बाद पुनः प्रयास करें।";
+            } else {
+                return "⚠️ कनेक्शन समस्या। कृपया इंटरनेट कनेक्शन जाँचें।";
+            }
+        }
+        
+        const data = await response.json();
+        
+        if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+            return data.candidates[0].content.parts[0].text;
+        } else {
+            return "मुझे समझ नहीं आया। कृपया फिर से पूछें। 😊";
+        }
+    }
+
+    // Add message to chat
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}`;
+        
+        if (sender === 'bot') {
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">${formatMessage(text)}</div>
+            `;
+        } else {
+            messageDiv.innerHTML = `
+                <div class="message-content">${escapeHtml(text)}</div>
+            `;
+        }
+        
+        chatMessages.appendChild(messageDiv);
+        scrollToBottom();
+    }
+
+    function formatMessage(text) {
+        return text.replace(/\n/g, '<br>');
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // Typing indicator
+    function showTypingIndicator() {
+        const indicator = document.createElement('div');
+        indicator.className = 'message bot';
+        indicator.id = 'typingIndicator';
+        indicator.innerHTML = `
+            <div class="message-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        `;
+        chatMessages.appendChild(indicator);
+        scrollToBottom();
+    }
+
+    function removeTypingIndicator() {
+        const indicator = document.getElementById('typingIndicator');
+        if (indicator) {
+            indicator.remove();
+        }
+    }
+
+    function scrollToBottom() {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    }
+
+    if (sendBtn) {
+        sendBtn.addEventListener('click', sendMessage);
+    }
+
+    console.log("🤖 Gemini AI Chatbot Loaded!");
+    </script>
+
+    <script>
         function toggleMenu() {
             const menu = document.querySelector('.menu');
             menu.classList.toggle('d-none');
             menu.classList.toggle('active');
         }
-    // 1. Netlify Identity ko initialize karein
-    netlifyIdentity.init();
+        // 1. Netlify Identity ko initialize karein
+        netlifyIdentity.init();
 
-    document.addEventListener("DOMContentLoaded", () => {
-        function updateUI(user) {
-            const loginLi = document.getElementById('loginLi');
-            const logoutLi = document.getElementById('logoutLi');
-            const nameDisplay = document.getElementById('userNameDisplay');
-            
-            if (user) {
-                // Agar user login hai, toh "Login" link ko puri tarah hide karo
-                if(loginLi) {
-                    loginLi.setAttribute('style', 'display: none !important');
-                }
+        document.addEventListener("DOMContentLoaded", () => {
+            function updateUI(user) {
+                const loginLi = document.getElementById('loginLi');
+                const logoutLi = document.getElementById('logoutLi');
+                const nameDisplay = document.getElementById('userNameDisplay');
                 
-                // Logout section aur Dashboard link dikhao
-                if(logoutLi) {
-                    logoutLi.style.display = 'flex';
-                    logoutLi.style.alignItems = 'center';
-                }
+                if (user) {
+                    // Agar user login hai, toh "Login" link ko puri tarah hide karo
+                    if(loginLi) {
+                        loginLi.setAttribute('style', 'display: none !important');
+                    }
+                    
+                    // Logout section aur Dashboard link di khao
+                    if(logoutLi) {
+                        logoutLi.style.display = 'flex';
+                        logoutLi.style.alignItems = 'center';
+                    }
 
-                // User icon aur Dashboard link Navbar mein set karein
-                if(nameDisplay) {
-                    nameDisplay.innerHTML = `
-                        <a href="/dashboard.html" title="Go to Dashboard" style="color: #ff9800; font-size: 1.1rem; text-decoration: none; margin-right: 15px; font-weight: bold;">
-                            <i class="fas fa-user-circle"></i> Dashboard
-                        </a>`;
-                }
-            } else {
-                // Agar user logout hai, toh wapas "Login" button dikhao
-                if(loginLi) {
-                    loginLi.style.display = 'block';
-                }
-                // Logout section hide karo
-                if(logoutLi) {
-                    logoutLi.style.display = 'none';
+                    // User icon aur Dashboard link Navbar mein set karein
+                    if(nameDisplay) {
+                        nameDisplay.innerHTML = `
+                            <a href="/dashboard.html" title="Go to Dashboard" style="color: #ff9800; font-size: 1.1rem; text-decoration: none; margin-right: 15px; font-weight: bold;">
+                                <i class="fas fa-user-circle"></i> Dashboard
+                            </a>`;
+                    }
+                } else {
+                    // Agar user logout hai, toh wapas "Login" button dikhao
+                    if(loginLi) {
+                        loginLi.style.display = 'block';
+                    }
+                    // Logout section hide karo
+                    if(logoutLi) {
+                        logoutLi.style.display = 'none';
+                    }
                 }
             }
-        }
 
-        // Netlify Identity ke events handle karein
-        netlifyIdentity.on('init', user => updateUI(user));
-        
-        netlifyIdentity.on('login', user => {
-            updateUI(user);
-            netlifyIdentity.close();
-            // Login hote hi seedha dashboard par bhejein
-            window.location.href = "/dashboard.html";
-        });
+            // Netlify Identity ke events handle karein
+            netlifyIdentity.on('init', user => updateUI(user));
+            
+            netlifyIdentity.on('login', user => {
+                updateUI(user);
+                netlifyIdentity.close();
+                // Login hote hi seedha dashboard par bhejein
+                window.location.href = "/dashboard.html";
+            });
 
-        netlifyIdentity.on('logout', () => {
-            updateUI(null);
-            // Logout hone par home page par wapas laayein
-            window.location.href = "/index.html";
-        });
+            netlifyIdentity.on('logout', () => {
+                updateUI(null);
+                // Logout hone par home page par wapas laayein
+                window.location.href = "/index.html";
+            });
 
-        // Logout button par click karne par trigger karein
-        document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            netlifyIdentity.logout();
+            // Logout button par click karne par trigger karein
+            document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                netlifyIdentity.logout();
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
