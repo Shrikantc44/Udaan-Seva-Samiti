@@ -247,46 +247,36 @@
     <script src="./js/include.js"></script>
     <script src="script.js"></script>
 
-    <!-- Gemini AI Chatbot JavaScript -->
+    <!-- Gemini AI Chatbot JavaScript - Calls Netlify Function (API Key Secure) -->
     <script>
-    // ============================================
-    // 🔑 YOUR GEMINI API KEY - PUT YOUR KEY HERE
-    // ============================================
-    const GEMINI_API_KEY = "AQ.Ab8RN6Ksf0eprLbiU2YRpZKtwORGVjwf-D7o5uN_PRT44JAFLQ";
-    // IMPORTANT: Replace with your actual key from Google AI Studio
-    // Example: const GEMINI_API_KEY = "AQ.Ab8RN6Ksf0eprLbiU2YRpZKtwORGVjwF-D7o5uN_PRT44JAFLQ";
-
-    // Gemini API endpoint
-    const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
-
     // Organization information for the AI
     const ORGANIZATION_INFO = `उड़ान सेवा समिति (बिरही) के बारे में जानकारी:
 
-    संगठन का नाम: उड़ान सेवा समिति (बिरही)
-    प्रकार: निःशुल्क गैर-लाभकारी संगठन
-    उद्देश्य: ग्रामीण क्षेत्रों के छात्रों को शिक्षा और प्रतियोगी परीक्षाओं के लिए मार्गदर्शन
-    लक्ष्य छात्र: कक्षा 4वीं से 10वीं तक
-    स्थान: बिरही, उत्तर प्रदेश
+संगठन का नाम: उड़ान सेवा समिति (बिरही)
+प्रकार: निःशुल्क गैर-लाभकारी संगठन
+उद्देश्य: ग्रामीण क्षेत्रों के छात्रों को शिक्षा और प्रतियोगी परीक्षाओं के लिए मार्गदर्शन
+लक्ष्य छात्र: कक्षा 4वीं से 10वीं तक
+स्थान: बिरही, उत्तर प्रदेश
 
-    मुख्य सेवाएँ:
-    - निःशुल्क प्रतियोगी परीक्षाएँ
-    - अभ्यास परीक्षण और प्रतिभा मूल्यांकन
-    - करियर जागरूकता कार्यक्रम
+मुख्य सेवाएँ:
+- निःशुल्क प्रतियोगी परीक्षाएँ
+- अभ्यास परीक्षण और प्रतिभा मूल्यांकन
+- करियर जागरूकता कार्यक्रम
 
-    दान हेतु बैंक विवरण:
-    - बैंक: स्टेट बैंक ऑफ इंडिया (SBI)
-    - खाताधारक: उड़ान सेवा समिति
-    - IFSC: SBIN0012345
+दान हेतु बैंक विवरण:
+- बैंक: स्टेट बैंक ऑफ इंडिया (SBI)
+- खाताधारक: उड़ान सेवा समिति
+- IFSC: SBIN0012345
 
-    महत्वपूर्ण लिंक:
-    - परीक्षा पंजीकरण: होमपेज पर "परीक्षा पंजीकरण" बटन
-    - एडमिट कार्ड: "Download Your Admit Card" बटन
-    - व्हाट्सएप ग्रुप: होमपेज पर हरा बटन
+महत्वपूर्ण लिंक:
+- परीक्षा पंजीकरण: होमपेज पर "परीक्षा पंजीकरण" बटन
+- एडमिट कार्ड: "Download Your Admit Card" बटन
+- व्हाट्सएप ग्रुप: होमपेज पर हरा बटन
 
-    नियम:
-    - हमेशा मददगार और मित्रवत रहें
-    - हिंदी और इंग्लिश दोनों में जवाब दें
-    - संक्षिप्त और स्पष्ट जवाब दें`;
+नियम:
+- हमेशा मददगार और मित्रवत रहें
+- हिंदी और इंग्लिश दोनों में जवाब दें
+- संक्षिप्त और स्पष्ट जवाब दें`;
 
     // DOM Elements
     const chatbotToggle = document.getElementById('chatbotToggle');
@@ -309,7 +299,7 @@
         });
     }
 
-    // Send message function
+    // Send message function - calls Netlify Function
     async function sendMessage() {
         const message = chatInput.value.trim();
         if (message === '') return;
@@ -319,65 +309,33 @@
         showTypingIndicator();
         
         try {
-            let response;
+            // Call Netlify Function (API key is safe on server)
+            const response = await fetch('/.netlify/functions/chatbot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: message,
+                    systemContext: ORGANIZATION_INFO
+                })
+            });
             
-            if (GEMINI_API_KEY === "YOUR_API_KEY_HERE") {
-                response = "⚠️ कृपया अपनी Gemini API key कॉन्फ़िगर करें। Google AI Studio से key प्राप्त करें और कोड में 'YOUR_API_KEY_HERE' को replace करें।";
-            } else {
-                response = await getGeminiResponse(message);
-            }
+            const data = await response.json();
             
             removeTypingIndicator();
-            addMessage(response, 'bot');
+            
+            if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+                addMessage(data.candidates[0].content.parts[0].text, 'bot');
+            } else if (data.error) {
+                addMessage("क्षमा करें, तकनीकी समस्या आ गई है। कृपया पुनः प्रयास करें। 🙏", 'bot');
+            } else {
+                addMessage("मुझे समझ नहीं आया। कृपया फिर से पूछें। 😊", 'bot');
+            }
         } catch (error) {
             console.error('Error:', error);
             removeTypingIndicator();
             addMessage("क्षमा करें, तकनीकी समस्या आ गई है। कृपया पुनः प्रयास करें। 🙏", 'bot');
-        }
-    }
-
-    // Call Gemini API
-    async function getGeminiResponse(userMessage) {
-        const requestBody = {
-            contents: [{
-                parts: [{
-                    text: `${ORGANIZATION_INFO}\n\nउपयोगकर्ता का प्रश्न: ${userMessage}\n\nकृपया मददगार जवाब दें (हिंदी/इंग्लिश में):`
-                }]
-            }],
-            generationConfig: {
-                temperature: 0.7,
-                maxOutputTokens: 500,
-                topP: 0.95
-            }
-        };
-        
-        const response = await fetch(`${API_URL}?key=${GEMINI_API_KEY}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestBody)
-        });
-        
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.error('API Error:', errorData);
-            
-            if (response.status === 403) {
-                return "🔑 API key गलत है या समाप्त हो गई है। कृपया जाँच करें।";
-            } else if (response.status === 429) {
-                return "📊 बहुत सारे अनुरोध हो गए। कृपया कुछ देर बाद पुनः प्रयास करें।";
-            } else {
-                return "⚠️ कनेक्शन समस्या। कृपया इंटरनेट कनेक्शन जाँचें।";
-            }
-        }
-        
-        const data = await response.json();
-        
-        if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
-            return data.candidates[0].content.parts[0].text;
-        } else {
-            return "मुझे समझ नहीं आया। कृपया फिर से पूछें। 😊";
         }
     }
 
@@ -453,7 +411,7 @@
         sendBtn.addEventListener('click', sendMessage);
     }
 
-    console.log("🤖 Gemini AI Chatbot Loaded!");
+    console.log("🤖 Gemini AI Chatbot Loaded (API Key Secure via Netlify Function)!");
     </script>
 
     <script>
