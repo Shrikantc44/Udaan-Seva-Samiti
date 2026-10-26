@@ -31,6 +31,8 @@
 
     /* Hamburger icon */
     .menu-toggle {
+        min-width: 28px;
+        min-height: 28px;
         display: block;
         cursor: pointer;      /* ADD */
         font-size: 24px;      /* ADD */
@@ -46,7 +48,7 @@
         width: 100%;          /* ADD */
         background: #333;     /* ADD */
         position: absolute;   /* ADD */
-        top: 60px;            /* ADD */
+        top: 100%;            /* ADD */
         left: 0;              /* ADD */
         z-index: 999;         /* ADD */
         padding: 0;           /* ADD */
