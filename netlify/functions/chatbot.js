@@ -3,6 +3,7 @@
 //   GEMINI_API_KEY  (zaroori)
 //   GEMINI_MODEL    (optional - model badalna ho to)
 const DEFAULT_MODEL = 'gemini-3.8-flash';
+const TIMEOUT_MS = 8000; // Netlify ke limit se pehle khud rok do
 
 const json = (statusCode, obj) => ({
     statusCode,
@@ -21,6 +22,9 @@ exports.handler = async (event) => {
         return json(500, { error: 'API key not configured on server' });
     }
 
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+
     try {
         const { message, systemContext } = JSON.parse(event.body || '{}');
         if (!message || typeof message !== 'string') {
@@ -32,13 +36,18 @@ exports.handler = async (event) => {
             `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
             {
                 method: 'POST',
+                signal: controller.signal,
                 headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
                 body: JSON.stringify({
                     systemInstruction: {
                         parts: [{ text: `${String(systemContext || '').slice(0, 6000)}\n\nHinglish ya user ki bhasha mein, chhote aur helpful jawab do.` }]
                     },
                     contents: [{ role: 'user', parts: [{ text: message.slice(0, 1000) }] }],
-                    generationConfig: { temperature: 0.7, maxOutputTokens: 800 }
+                    generationConfig: {
+                        temperature: 0.7,
+                        maxOutputTokens: 1000,
+                        thinkingConfig: { thinkingLevel: 'low' }
+                    }
                 })
             }
         );
@@ -49,7 +58,13 @@ exports.handler = async (event) => {
         }
         return json(response.status, data);
     } catch (error) {
+        if (error.name === 'AbortError') {
+            console.error('Gemini request timed out after', TIMEOUT_MS, 'ms');
+            return json(504, { error: { message: 'Gemini ne time par jawab nahi diya, dobara try karo.' } });
+        }
         console.error('Function error:', error);
         return json(500, { error: 'Internal server error: ' + error.message });
+    } finally {
+        clearTimeout(timer);
     }
 };
