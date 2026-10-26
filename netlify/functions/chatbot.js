@@ -37,40 +37,7 @@ exports.handler = async (event) => {
     const model = process.env.AI_MODEL || provider.defaultModel;
     const authHeaders = { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` };
 
-    // ---- TEMPORARY test tool (debugging ke baad ye poora GET block hata dena) ----
-    if (event.httpMethod === 'GET') {
-        const qs = event.queryStringParameters || {};
-        try {
-            if (qs.models) {   // ?models=1 -> available models ki list
-                const r = await fetch(`${provider.base}/models`, { headers: authHeaders });
-                const d = await r.json();
-                if (!r.ok) return json(r.status, d);
-                return json(200, { provider: providerName, models: (d.data || []).map(m => m.id) });
-            }
-            if (qs.test) {     // ?test=MODEL_NAME -> speed aur jawab check
-                const t0 = Date.now();
-                const r = await fetch(`${provider.base}/chat/completions`, {
-                    method: 'POST',
-                    headers: authHeaders,
-                    body: JSON.stringify({
-                        model: qs.test,
-                        messages: [{ role: 'user', content: '9+4 kitna hota hai? ek line mein batao' }],
-                        max_tokens: 100
-                    })
-                });
-                const d = await r.json();
-                return json(200, {
-                    model: qs.test, status: r.status, ms: Date.now() - t0,
-                    reply: d?.choices?.[0]?.message?.content, error: d.error
-                });
-            }
-        } catch (e) {
-            return json(500, asError(e.message));
-        }
-        return json(200, { provider: providerName, model, usage: '?models=1  ya  ?test=MODEL_NAME' });
-    }
-    // ---- end temporary test tool ----
-
+    
     if (event.httpMethod !== 'POST') {
         return json(405, asError('Method not allowed. Use POST.'));
     }
