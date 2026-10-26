@@ -65,3 +65,20 @@ h2 {
         padding: 10px 15px;
     }
 }
+
+/* Fixed navbar ko page ke upar pakka lagao aur uske neeche jagah chhodo */
+.navbar {
+    top: 0;
+    left: 0;
+}
+
+#navbar-placeholder + div {
+    margin-top: 50px;
+}
+
+/* Mobile par navbar position: relative hota hai, isliye extra jagah nahi chahiye */
+@media (max-width: 768px) {
+    #navbar-placeholder + div {
+        margin-top: 0;
+    }
+}

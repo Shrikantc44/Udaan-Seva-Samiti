@@ -514,5 +514,19 @@ footer {
         flex-direction: column;
         gap: 10px;
         align-items: center;
+
+
+    }
+}
+
+/* Fixed navbar (60px) content ko dhak raha tha - desktop par jagah chhodo */
+.main-content {
+    padding-top: 60px;
+}
+
+/* Mobile par navbar position: relative hota hai, isliye extra jagah nahi chahiye */
+@media (max-width: 768px) {
+    .main-content {
+        padding-top: 0;
     }
 }

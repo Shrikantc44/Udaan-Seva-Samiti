@@ -325,4 +325,19 @@ div li{
     .year-section {
         padding: 0 15px;
     }
+
+    
 }
+
+/* Fixed navbar (60px) gallery header ko dhak raha tha - desktop par jagah chhodo */
+.gallery-header {
+    margin-top: 60px;
+}
+
+/* Mobile par navbar position: relative hota hai, isliye extra jagah nahi chahiye */
+@media (max-width: 768px) {
+    .gallery-header {
+        margin-top: 0;
+    }
+}
+
