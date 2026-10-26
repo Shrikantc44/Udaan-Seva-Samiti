@@ -2,7 +2,7 @@
 // Netlify > Site configuration > Environment variables:
 //   GEMINI_API_KEY  (zaroori)
 //   GEMINI_MODEL    (optional - model badalna ho to)
-const DEFAULT_MODEL = 'gemini-2.5-flash';
+const DEFAULT_MODEL = 'gemini-3.8-flash';
 
 const json = (statusCode, obj) => ({
     statusCode,
