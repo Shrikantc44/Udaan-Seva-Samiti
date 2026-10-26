@@ -2,11 +2,11 @@
 // Netlify > Site configuration > Environment variables:
 //   AI_PROVIDER   groq (default) | openrouter | openai
 //   GROQ_API_KEY  (provider groq ke liye)   |  OPENROUTER_API_KEY  |  OPENAI_API_KEY
-//   AI_MODEL      (optional groq ke liye; openrouter/openai ke liye zaroori)
+//   AI_MODEL      (optional groq ke liye, default openai/gpt-oss-20b; openrouter/openai ke liye zaroori)
 //   AI_TIMEOUT_MS (optional, default 8000)
 
 const PROVIDERS = {
-    groq:       { base: 'https://api.groq.com/openai/v1', keyEnv: 'GROQ_API_KEY',       defaultModel: 'llama-3.3-70b-versatile' },
+    groq:       { base: 'https://api.groq.com/openai/v1', keyEnv: 'GROQ_API_KEY',       defaultModel: 'openai/gpt-oss-20b' },
     openrouter: { base: 'https://openrouter.ai/api/v1',   keyEnv: 'OPENROUTER_API_KEY', defaultModel: '' },
     openai:     { base: 'https://api.openai.com/v1',      keyEnv: 'OPENAI_API_KEY',     defaultModel: '' }
 };
@@ -100,7 +100,9 @@ exports.handler = async (event) => {
                     { role: 'user', content: message.slice(0, 1000) }
                 ],
                 temperature: 0.7,
-                max_tokens: 800
+                max_tokens: 1000,
+                // gpt-oss "sochne wala" model hai: kam sochne do, taaki jawab khali na aaye
+                ...(model.includes('gpt-oss') ? { reasoning_effort: 'low' } : {})
             })
         });
 
