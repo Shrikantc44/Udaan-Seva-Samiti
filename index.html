@@ -299,15 +299,15 @@
         });
     }
 
-    // Send message function - calls Netlify Function
+       // Send message function - calls Netlify Function
     async function sendMessage() {
         const message = chatInput.value.trim();
         if (message === '') return;
-        
+
         addMessage(message, 'user');
         chatInput.value = '';
         showTypingIndicator();
-        
+
         try {
             // Call Netlify Function (API key is safe on server)
             const response = await fetch('/.netlify/functions/chatbot', {
@@ -320,25 +320,30 @@
                     systemContext: ORGANIZATION_INFO
                 })
             });
-            
-            const data = await response.json();
-            
+
+            // JSON na aaye (jaise 404 page) tab bhi crash na ho
+            let data = {};
+            try { data = await response.json(); } catch (_) { /* JSON nahi tha */ }
+            console.log('Chatbot response:', response.status, data);
+
             removeTypingIndicator();
-            
-            if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
-                addMessage(data.candidates[0].content.parts[0].text, 'bot');
-            } else if (data.error) {
-                addMessage("क्षमा करें, तकनीकी समस्या आ गई है। कृपया पुनः प्रयास करें। 🙏", 'bot');
+
+            const reply = data?.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('');
+            if (reply) {
+                addMessage(reply, 'bot');
+            } else if (!response.ok || data.error) {
+                // DEBUG: asli error chat mein dikhega. Chatbot chalne ke baad "(Debug: ...)" wala hissa hata dena.
+                const detail = data?.error?.message || data?.error || response.statusText || 'unknown';
+                addMessage("क्षमा करें, तकनीकी समस्या आ गई है। 🙏\n(Debug: " + response.status + " - " + detail + ")", 'bot');
             } else {
                 addMessage("मुझे समझ नहीं आया। कृपया फिर से पूछें। 😊", 'bot');
             }
         } catch (error) {
             console.error('Error:', error);
             removeTypingIndicator();
-            addMessage("क्षमा करें, तकनीकी समस्या आ गई है। कृपया पुनः प्रयास करें। 🙏", 'bot');
+            addMessage("क्षमा करें, तकनीकी समस्या आ गई है। 🙏\n(Debug: " + error.message + ")", 'bot');
         }
     }
-
     // Add message to chat
     function addMessage(text, sender) {
         const messageDiv = document.createElement('div');
