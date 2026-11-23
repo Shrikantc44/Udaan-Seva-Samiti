@@ -505,4 +505,159 @@ footer{
     .chatbot-toggle i {
         font-size: 24px;
     }
-}       
+} 
+
+        .video-gallery {
+            background: linear-gradient(135deg, #f4f7f6, #e9f1fb);
+            padding: 60px 20px;
+        }
+
+        .vg-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .vg-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .vg-heading h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f3a5f;
+            margin-bottom: 12px;
+        }
+
+        .vg-heading h2 i {
+            color: #e53935;
+            margin-right: 8px;
+        }
+
+        .vg-heading p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .vg-heading .vg-line {
+            width: 80px;
+            height: 4px;
+            background: #ff9800;
+            border-radius: 4px;
+            margin: 15px auto 18px;
+        }
+
+        .vg-group {
+            margin-bottom: 50px;
+        }
+
+        .vg-group-title {
+            display: inline-block;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.25);
+        }
+
+        .vg-group-title.green { background: linear-gradient(135deg, #27ae60, #1e8449); box-shadow: 0 6px 15px rgba(39,174,96,0.25); }
+        .vg-group-title.orange { background: linear-gradient(135deg, #ff9800, #e65100); box-shadow: 0 6px 15px rgba(255,152,0,0.3); }
+
+        .vg-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .vg-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .vg-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+        }
+
+        .vg-video {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+
+        .vg-video iframe,
+        .vg-video video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .vg-info {
+            padding: 16px 18px 20px;
+        }
+
+        .vg-info h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #2d3436;
+            margin-bottom: 6px;
+        }
+
+        .vg-info p {
+            font-size: 0.92rem;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ===== Vertical (portrait) video grid ===== */
+.vg-grid.vertical {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.vg-grid.vertical .vg-video {
+    aspect-ratio: 9 / 16;      /* vertical video ke hisaab se */
+    max-height: 560px;
+    background: #000;
+}
+
+.vg-grid.vertical .vg-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;       /* poori video dikhegi, kat-ti nahi */
+    display: block;
+}
+
+@media (max-width: 992px) {
+    .vg-grid.vertical {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .vg-grid.vertical {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+    }
+}
+
+        @media (max-width: 768px) {
+            .video-gallery { padding: 40px 15px; }
+            .vg-heading h2 { font-size: 1.5rem; }
+            .vg-grid { grid-template-columns: 1fr; }
+        }

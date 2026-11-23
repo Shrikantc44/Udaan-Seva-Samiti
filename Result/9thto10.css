@@ -1,141 +1,183 @@
 :root {
-    --primary-purple: #6c5ce7;
-    --gold: #f1c40f;
-    --silver: #bdc3c7;
-    --bronze: #e67e22;
-    --dark-text: #2d3436;
-    --bg-color: #f1f2f6;
+    --primary-green: #27ae60; /* Professional Emerald Green */
+    --gold: #FFD700;
+    --silver: #C0C0C0;
+    --bronze: #CD7F32;
+    --dark: #2d3436;
+    --bg-gray: #f4f7f6;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
+    /* font-family yahan se hata diya (icons toot rahe the) */
+}
+
+html,
+body {
+    overflow-x: hidden;
 }
 
 body {
-    background-color: var(--bg-color);
-    padding: 25px 15px;
+    background-color: var(--bg-gray);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    /* pehle yahan padding: 30px 15px tha (galat) */
 }
 
+/* ===== Navbar ===== */
+#navbar-placeholder {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#navbar-placeholder .navbar {
+    position: relative;
+    top: 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* ===== Main Container (padding yahan lagi) ===== */
 .main-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 30px 15px 50px;
 }
 
 .year-block {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
-/* Header with Gradient */
+/* ===== Header Styling ===== */
+.result-header {
+    position: static;
+}
+
 .result-header h2 {
     text-align: center;
     padding: 12px;
-    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    background: linear-gradient(135deg, var(--primary-green), #1e8449);
     color: white;
-    border-radius: 15px;
+    border-radius: 12px;
     margin-bottom: 30px;
-    box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
-    font-size: 1.6rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.2);
+    font-size: 1.5rem;
 }
 
-/* Grid System */
-.cards-container {
+/* ===== Grid Layout ===== */
+.main-container .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding-top: 10px; /* hover par card header se na takraye */
 }
 
-/* Premium Card Style */
-.card {
+/* ===== Card Design ===== */
+.main-container .card {
     background: white;
     border-radius: 20px;
     padding: 20px;
     position: relative;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.05);
-    transition: all 0.4s ease;
-    border-top: 6px solid #dfe6e9;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border-top: 6px solid #e0e0e0;
     overflow: hidden;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(108, 92, 231, 0.15);
+.main-container .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* Rank Coloring */
-.rank-1 { border-top-color: var(--gold); }
-.rank-2 { border-top-color: var(--silver); }
-.rank-3 { border-top-color: var(--bronze); }
+/* Rank Highlights */
+.main-container .rank-1 { border-top-color: var(--gold); }
+.main-container .rank-2 { border-top-color: var(--silver); }
+.main-container .rank-3 { border-top-color: var(--bronze); }
 
-/* Badge Style */
-.badge {
+/* ===== Badge ===== */
+.main-container .badge {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: var(--primary-purple);
+    left: auto;
+    background: var(--primary-green);
     color: white;
-    padding: 5px 15px;
-    border-radius: 50px;
+    padding: 5px 14px;
+    border-radius: 20px;
     font-size: 0.75rem;
     font-weight: bold;
-    z-index: 2;
+    text-transform: uppercase;
+    z-index: 5;
 }
 
-.rank-1 .badge { background: var(--gold); color: #000; }
+.main-container .rank-1 .badge {
+    background: var(--gold);
+    color: #000;
+}
 
-/* Image Box */
+/* ===== Image Styling ===== */
 .img-box {
     width: 100%;
-    height: 250px;
+    height: 260px;
     border-radius: 15px;
     overflow: hidden;
-    margin-bottom: 20px;
-    border: 1px solid #f1f1f1;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
 }
 
 .img-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    display: block;
+    transition: transform 0.5s ease;
 }
 
 .card:hover .img-box img {
     transform: scale(1.1);
 }
 
-/* Info Rows */
+/* ===== Data Content ===== */
 .info-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 10px;
     padding: 10px 0;
-    border-bottom: 1px solid #f9f9f9;
+    border-bottom: 1px solid #f1f1f1;
 }
 
-.info-row:last-child { border-bottom: none; }
+.info-row:last-child {
+    border-bottom: none;
+}
 
 .info-row strong {
-    color: var(--primary-purple);
-    font-size: 0.8rem;
+    color: var(--primary-green);
+    font-size: 0.85rem;
     text-transform: uppercase;
 }
 
 .info-row span {
-    color: var(--dark-text);
+    color: var(--dark);
     font-weight: 600;
+    text-align: right;
 }
 
-/* Responsive */
+/* ===== Responsive Fix ===== */
 @media (max-width: 768px) {
-    .cards-container {
+    .main-container .cards-container {
         grid-template-columns: 1fr;
     }
-    .card {
+
+    .main-container .card {
         max-width: 400px;
         margin: 0 auto;
+        width: 100%;
+    }
+
+    .result-header h2 {
+        font-size: 1.2rem;
     }
 }
