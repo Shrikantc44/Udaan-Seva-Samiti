@@ -661,3 +661,390 @@ footer{
             .vg-heading h2 { font-size: 1.5rem; }
             .vg-grid { grid-template-columns: 1fr; }
         }
+
+/* ================= EXAM CIRCULAR ================= */
+
+.exam-circular-section {
+    width: 100%;
+    padding: 50px 5px;
+    background: linear-gradient(135deg, #fff7e6, #ffffff);
+}
+
+.exam-circular-box {
+    max-width: 1100px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+
+    border: 2px solid #ff9800;
+}
+
+/* Header */
+
+.circular-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 18px 25px;
+
+    background: linear-gradient(90deg, #ff9800, #f57c00);
+
+    color: white;
+}
+
+.circular-icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+    color: #f57c00;
+
+    border-radius: 50%;
+
+    font-size: 23px;
+}
+
+.circular-header h2 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.circular-header p {
+    margin: 3px 0 0;
+    font-size: 14px;
+}
+
+.new-badge {
+    margin-left: auto;
+
+    background: #d32f2f;
+    color: white;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    animation: blinkNew 1.2s infinite;
+}
+
+@keyframes blinkNew {
+    50% {
+        opacity: 0.45;
+    }
+}
+
+/* Content */
+
+.circular-content {
+    padding: 25px 30px;
+}
+
+.circular-date {
+    display: inline-block;
+
+    background: #fff3cd;
+
+    color: #856404;
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+
+    margin-bottom: 15px;
+}
+
+.circular-content h3 {
+    margin: 5px 0 12px;
+
+    color: #333;
+
+    font-size: 21px;
+
+    font-weight: 700;
+}
+
+.circular-content p {
+    color: #555;
+
+    line-height: 1.7;
+
+    font-size: 16px;
+
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+
+.circular-buttons {
+    display: flex;
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.circular-buttons a {
+    text-decoration: none;
+
+    padding: 11px 20px;
+
+    border-radius: 7px;
+
+    color: white;
+
+    font-weight: 600;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    transition: 0.3s;
+}
+
+.view-circular-btn {
+    background: #d32f2f;
+}
+
+.download-circular-btn {
+    background: #1565c0;
+}
+
+.circular-buttons a:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+
+    color: white;
+}
+
+/* Footer */
+
+.circular-footer {
+    padding: 12px 20px;
+
+    background: #f8f9fa;
+
+    border-top: 1px solid #eee;
+
+    color: #555;
+
+    font-size: 14px;
+}
+
+.circular-footer i {
+    color: #ff9800;
+
+    margin-right: 5px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .exam-circular-section {
+        padding: 15px 10px;
+    }
+
+    .circular-header {
+        padding: 15px;
+
+        gap: 10px;
+    }
+
+    .circular-icon {
+        width: 42px;
+        height: 42px;
+
+        font-size: 18px;
+    }
+
+    .circular-header h2 {
+        font-size: 19px;
+    }
+
+    .circular-header p {
+        font-size: 12px;
+    }
+
+    .new-badge {
+        font-size: 10px;
+
+        padding: 5px 8px;
+    }
+
+    .circular-content {
+        padding: 20px 17px;
+    }
+
+    .circular-content h3 {
+        font-size: 18px;
+    }
+
+    .circular-content p {
+        font-size: 14px;
+    }
+
+    .circular-buttons {
+        flex-direction: column;
+    }
+
+    .circular-buttons a {
+        justify-content: center;
+
+        width: 100%;
+    }
+}
+
+/* ================= FUTURE GOALS ================= */
+
+.future-goals-title {
+    margin-top: 30px;
+    margin-bottom: 12px;
+    padding: 10px 15px;
+
+    color: #ffffff;
+    background: linear-gradient(90deg, #ff9800, #f57c00);
+
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: bold;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.future-goals-intro {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Goal List */
+
+.future-goals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.goal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    padding: 12px 15px;
+
+    background: #fffaf0;
+
+    border-left: 4px solid #ff9800;
+    border-radius: 7px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+    transition: 0.3s;
+}
+
+.goal-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.goal-icon {
+    min-width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff3cd;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+}
+
+.goal-content strong {
+    display: block;
+
+    color: #d35400;
+
+    font-size: 16px;
+
+    margin-bottom: 3px;
+}
+
+.goal-content p {
+    margin: 0;
+
+    color: #555;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+/* Sankalp */
+
+.future-goals-commitment {
+    margin-top: 15px;
+
+    padding: 13px 15px;
+
+    background: #f1f8ff;
+
+    border-left: 4px solid #1565c0;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+.future-goals-commitment strong {
+    color: #1565c0;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .future-goals-title {
+        font-size: 19px;
+    }
+
+    .goal-item {
+        padding: 10px;
+    }
+
+    .goal-icon {
+        min-width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+
+    .goal-content strong {
+        font-size: 14px;
+    }
+
+    .goal-content p {
+        font-size: 13px;
+    }
+
+}
